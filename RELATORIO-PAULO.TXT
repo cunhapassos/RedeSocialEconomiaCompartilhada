@@ -1,5 +1,5 @@
-   Data      | Horas Trabalhadas |      Tipo Tarefa        |       Descrição da Tarefa Realizada                              |
-=============|===================|=========================|==================================================================|
-18/11/2016   |      2h           | Estudo                  | Pesquisa e escolha da biblioteca gráfica a ser usada no sistema  |
--------------|-------------------|-------------------------|------------------------------------------------------------------|
-??/11/2016   |      2h           | ????                    | ???  |
+   Data      | Horas Trabalhadas |      Tipo Tarefa        |       Descrição da Tarefa Realizada                                |
+=============|===================|=========================|====================================================================|
+18/11/2016   |      2h           | Estudo                  | Pesquisa e escolha da biblioteca gráfica a ser usada no sistema    |
+-------------|-------------------|-------------------------|--------------------------------------------------------------------|
+18/11/2016   |      1h           | Estudo                  | Pesquisa e escolha das ferramentas para desenvolvimento do sistema |
