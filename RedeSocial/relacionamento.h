@@ -25,8 +25,8 @@
 class Relacionamento
 {
 private:
-    const Pessoa *origem;
-    const Pessoa *destino;
+    const Pessoa *padj;
+    const Relacionamento *prox;
 
 public:
     Relacionamento(const Pessoa *_origem, const Pessoa *_destino);

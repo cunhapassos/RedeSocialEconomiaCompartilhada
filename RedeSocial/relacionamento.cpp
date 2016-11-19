@@ -16,7 +16,7 @@ const Pessoa* Relacionamento::getOrigem() const
     return origem;
 }
 
-const Pessoa Relacionamento::getDestino() const
+const Pessoa* Relacionamento::getDestino() const
 {
     return destino;
 }

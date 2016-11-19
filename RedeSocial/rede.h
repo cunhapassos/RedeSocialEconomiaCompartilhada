@@ -21,6 +21,8 @@
 
 //---------------------------------------------------------------------------
 #include <list>
+#include <string>
+
 #include "Pessoa.h"
 #include "Relacionamento.h"
 //---------------------------------------------------------------------------
@@ -29,13 +31,16 @@ class Rede
     protected:
         int ordem;
         int tamanho;
-        list<Pessoa *> listaPessoas;
-        list<Relacionamento *> listaRelacionamentos;
-        list<Relacionamento *> caminhoRelacionamentos;
+        string nome;
+
+        Pessoa* pessoaInicio; // no inicial da lista de pessoas
 
 
     public:
-        Rede();
+        Rede(string nomeRede);
+
+    string getNome();
+    void destroiRede()
 };
 
 #endif // REDE_H

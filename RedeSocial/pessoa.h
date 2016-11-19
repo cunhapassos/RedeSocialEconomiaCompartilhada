@@ -21,6 +21,8 @@
 
 #include <string>
 
+#include "Relacionamento.h"
+
 class Pessoa
 {
     private:
@@ -33,6 +35,9 @@ class Pessoa
         string interesses[20];
         // transacoes
         // avaliacoes
+
+        Pessoa* prox;
+        Relacionamento* pAcessoRela;
 
     public:
         Pessoa(int _id, int _idade, string _cep, string _nome, char _genero, string _escolaridade);
