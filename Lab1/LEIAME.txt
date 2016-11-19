@@ -1,0 +1,26 @@
+======================================================================
+===========================  Biblioteca GRAFO  =======================
+======================================================================
+
+UNIVERSIDADE DE BRASÍLIA
+Departamento de Ciência da Computação
+Instituto de Ciências Exatas
+Disciplina: Métodos de Programação
+Aluno: Paulo da Cunha Passos Matrícula: 10/0118577
+
+INSTRUÇÕES PARA RODAR OS TESTES:
+
+1 - O Programa é composto pelos seguintes arquivos:
+	a - grafo.c
+	b - grafo.h
+	c - testa_grafo.c
+	d - testa_grafo.h
+	e - main.c
+	f - t1.txt			# Contém a estrutura de um grafo para os testes
+	g - makefile
+	
+2 - Para que os teste sejam rodados com sucesso, deve-se:
+ 	a - Instalar o framework CUnit na maquina;
+	b - Colocar o caminho para a pasta do framework na variável prefix do makefile;
+	c - Abrir o "terminal" na pasta que contenha todos os arquivos do programa;
+	d - Executar o comando make e será apresentado na tela o resultado dos testes.
