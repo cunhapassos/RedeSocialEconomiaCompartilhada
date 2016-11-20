@@ -124,9 +124,6 @@ class Rede
       ** *******************************************************************************/
       Relacionamento* procuraRelacionamentoPorCaminhoId( unsigned int idOrigem, unsigned int idDestino );
 
-      Pessoa* getPessoaAdjacenteNaoVisitada( unsigned int id ); // VERIFICAR SE CONVÉM RETIRAR????
-
-
    /*****  Interface das funções exportadas pela classe  *****/
    public:
       /** ******************************************************************************
@@ -327,9 +324,6 @@ class Rede
       *
       ** *******************************************************************************/
       void limpa();
-
-      bool menorCaminho( unsigned int idOrigem, unsigned int idDestino );
-      bool arvoreGeradoraMinima( unsigned int idOrigem );
 };
 
 #endif
