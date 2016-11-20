@@ -304,7 +304,28 @@ class Rede
       *
       ** *******************************************************************************/
       unsigned int numeroPessoas();
+
+      /** ******************************************************************************
+      *  Funcao: vazia
+      *
+      *  Descricao da funcao:
+      *      Informa se rede social está vazia ou nao
+      *
+      * @return     true   - Indica que a rede social está vazia.
+      * @return     false  - Indica que a rede social não está vazia.
+      *
+      ** *******************************************************************************/
       bool vazia();
+
+      /** ******************************************************************************
+      *  Funcao: limpa
+      *
+      *  Descricao da funcao:
+      *      Limpa a rede social, apagando relacionamentos e pessoas que existiam na rede
+      * social.
+      *
+      *
+      ** *******************************************************************************/
       void limpa();
 
       bool menorCaminho( unsigned int idOrigem, unsigned int idDestino );

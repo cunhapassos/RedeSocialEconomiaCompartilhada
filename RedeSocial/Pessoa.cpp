@@ -1,77 +1,100 @@
+/** ********************************************************************************
+ *  @addtogroup MODULO REDE_SOCIAL
+ *  @{
+ *  @ingroup MOD_RS
+ *
+ *  @file Pessoa.cpp
+ *  @brief Módulo de implementação: Módulo Rede Social
+ *
+ *
+ * @author NUR CORREIA - MAT. 15/0143290
+ * @author PAULO DA CUNHA PASSOS - MAT. 10/0118577
+ * @version 1.0
+ * @since 19/11/2016
+ *
+ @}********************************************************************************/
+
+/* inclusão do módulo de definição */
+
+#include "Pessoa.h"
 //---------------------------------------------------------------------------
-#include "NoGrafo.h"
-//---------------------------------------------------------------------------
-NoGrafo::NoGrafo( unsigned int _id, int _valor, int valorX, int valorY, int valorZ )
+Pessoa::Pessoa(unsigned int _id, string _nome, unsigned int _idade, char _genero, unsigned int _cep, string _escolaridade)
 {
    id = _id;
-   setValor( _valor );
-   setXYZ( valorX, valorY, valorZ );
+   setNome( _nome );
+   setIdade( _idade );
+   setGenero( _genero );
+   setCep( _cep );
+   setEscolaridade( _escolaridade);
    visitado = false;
 }
 //---------------------------------------------------------------------------
-NoGrafo::~NoGrafo()
+Pessoa::~Pessoa()
 {
 }
-//---------------------------------------------------------------------------
-void NoGrafo::setX( int valorX )
-{
-   x = valorX;
-}
-//---------------------------------------------------------------------------
-int NoGrafo::getX() const
-{
-   return x;
-}
-//---------------------------------------------------------------------------
-void NoGrafo::setY( int valorY )
-{
-   y = valorY;
-}
-//---------------------------------------------------------------------------
-int NoGrafo::getY() const
-{
-   return y;
-}
-//---------------------------------------------------------------------------
-void NoGrafo::setZ( int valorZ )
-{
-   z = valorZ;
-}
-//---------------------------------------------------------------------------
-int NoGrafo::getZ() const
-{
-   return z;
-}
-//---------------------------------------------------------------------------
-void NoGrafo::setXYZ( int valorX, int valorY, int valorZ )
-{
-	setX( valorX );
-	setY( valorY );
-	setZ( valorZ );   
-}
-//---------------------------------------------------------------------------
-unsigned int NoGrafo::getId() const
+//--------------------------------------------------------------------------- /
+unsigned int Pessoa::getId() const
 {
    return id;
 }
 //---------------------------------------------------------------------------
-void NoGrafo::setValor( int _valor )
+void Pessoa::setNome( string _nome )
 {
-   valor = _valor;
+   nome = _nome;
 }
 //---------------------------------------------------------------------------
-int NoGrafo::getValor() const
+string Pessoa::getNome() const
 {
-   return valor;
+   return nome;
 }
 //---------------------------------------------------------------------------
-bool NoGrafo::getVisitado() const
+bool Pessoa::getVisitado() const
 {
    return visitado;
 }
 //---------------------------------------------------------------------------
-void NoGrafo::setVisitado( bool valor )
+void Pessoa::setVisitado( bool valor )
 {
    visitado = valor;
+}
+//---------------------------------------------------------------------------
+void Pessoa::setIdade(unsigned int _idade)
+{
+   idade = _idade;
+}
+//---------------------------------------------------------------------------
+unsigned int Pessoa::getIdade() const
+{
+   return idade;
+}
+//---------------------------------------------------------------------------
+void Pessoa::setGenero(char _genero)
+{
+   genero = _genero;
+}
+//---------------------------------------------------------------------------
+char Pessoa::getGenero() const
+{
+   return genero;
+}
+//---------------------------------------------------------------------------
+void Pessoa::setCep(unsigned int _cep)
+{
+   cep = _cep;
+}
+//---------------------------------------------------------------------------
+unsigned int Pessoa::getCep() const
+{
+   return cep;
+}
+//---------------------------------------------------------------------------
+void Pessoa::setEscolaridade(string _escolaridade)
+{
+   escolaridade = _escolaridade;
+}
+//---------------------------------------------------------------------------
+string Pessoa::getEscolaridade() const
+{
+   return escolaridade;
 }
 //---------------------------------------------------------------------------
