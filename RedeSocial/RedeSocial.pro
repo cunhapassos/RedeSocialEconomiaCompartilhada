@@ -10,11 +10,11 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    rede.cpp \
-    pessoa.cpp \
-    relacionamento.cpp
+    Pessoa.cpp \
+    Rede.cpp \
+    Relacionamento.cpp
 
 HEADERS += \
-    rede.h \
-    pessoa.h \
-    relacionamento.h
+    Pessoa.h \
+    Rede.h \
+    Relacionamento.h

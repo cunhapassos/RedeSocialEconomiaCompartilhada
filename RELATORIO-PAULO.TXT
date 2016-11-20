@@ -1,5 +1,9 @@
-   Data      | Horas Trabalhadas |      Tipo Tarefa        |       Descrição da Tarefa Realizada                                |
-=============|===================|=========================|====================================================================|
-18/11/2016   |      2h           | Estudo                  | Pesquisa e escolha da biblioteca gráfica a ser usada no sistema    |
--------------|-------------------|-------------------------|--------------------------------------------------------------------|
-18/11/2016   |      1h           | Estudo                  | Pesquisa e escolha das ferramentas para desenvolvimento do sistema |
+   Data      | Horas Trabalhadas |      Tipo Tarefa        |       Descrição da Tarefa Realizada                                 |
+=============|===================|=========================|=====================================================================|
+18/11/2016   |      2h           | Estudo                  | Pesquisa e escolha da biblioteca gráfica a ser usada no sistema     |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+19/11/2016   |      1h           | Estudo                  | Pesquisa e escolha das ferramentas para desenvolvimento do sistema  |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+18/11/2016   |      4h           | codificar módulo        | Refatoração, renomemeação e passagem de código existente do módulo  |
+             |                   |                         |de grafo do paradigma estruturado para o paradigma orientado a objeto|
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
