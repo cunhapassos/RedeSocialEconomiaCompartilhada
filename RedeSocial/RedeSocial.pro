@@ -10,11 +10,30 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    Pessoa.cpp \
-    Rede.cpp \
-    Relacionamento.cpp
+    testes.cpp \
+    avaliacao.cpp \
+    pessoa.cpp \
+    rede.cpp \
+    relacionamento.cpp \
+    transacao.cpp \
+    usuario.cpp \
+    json.cpp
 
 HEADERS += \
-    Pessoa.h \
-    Rede.h \
-    Relacionamento.h
+    avaliacao.h \
+    pessoa.h \
+    rede.h \
+    relacionamento.h \
+    transacao.h \
+    usuario.h
+
+unix: LIBS += -L$$PWD/./ -lgtest
+
+INCLUDEPATH += $$PWD/include
+DEPENDPATH += $$PWD/include
+
+unix: PRE_TARGETDEPS += $$PWD/./libgtest.a
+
+DISTFILES += \
+    JSON.json \
+    rede.json

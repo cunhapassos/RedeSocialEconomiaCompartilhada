@@ -1,0 +1,83 @@
+{
+    "ListaPessoas": [
+        {
+            "avaliacoes": [],
+            "cep": 71065904,
+            "escolaridade": "Superior",
+            "genero": "M",
+            "id": "1",
+            "idade": 32,
+            "interesses": [
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro"
+            ],
+            "nome": "Paulo",
+            "transacoes": []
+        },
+        {
+            "avaliacoes": [],
+            "cep": 71065905,
+            "escolaridade": "Primeiro Grau incompleto",
+            "genero": "M",
+            "id": "2",
+            "idade": 20,
+            "interesses": [
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro"
+            ],
+            "nome": "Pedro",
+            "transacoes": []
+        }
+    ],
+    "ListaRelacionamentos": [
+        {
+            "idDestino": 2,
+            "idOrigem": 1
+        }
+    ],
+    "transacoes": [
+        {
+            "IdConsumidor": 1,
+            "IdFornecedor": 2,
+            "id": 1,
+            "interesseSolicitante": "Comprar Carro",
+            "intersseFornecedor": "Vender Carro"
+        }
+    ]
+}

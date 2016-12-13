@@ -24,7 +24,15 @@
 
 /* Inclusão do compilador */
 
-#include <string>
+
+#include <vector>
+#include <sstream>
+#include <iostream>
+
+#include "json.cpp"
+#include "transacao.h"
+#include "avaliacao.h"
+
 using namespace std;
 
 /** ********************************************************************************
@@ -48,18 +56,19 @@ class Pessoa
     /* Atributos da classe */
    private:
       string nome;
-      char genero;
+      string genero;
       bool visitado;
       unsigned int id;
       unsigned int cep;
       unsigned int idade;
       string escolaridade;
-      string interesses[20];
-      // transacoes
-      // avaliacoes
 
    /*****  Interface das funções exportadas pela classe  *****/
    public:
+      vector<string> interesses;
+      vector<int> transacoes; // Lista de id das transacoes que a passoa participou
+      vector<int> avaliacoes; // Lista de id das avaliacoes da pessoa
+
       /** ******************************************************************************
       *
       *  Descricao da funcao:
@@ -81,7 +90,7 @@ class Pessoa
       *              _idade, _id e _cep sao representados por inteiros sem sinal.
       *
       ** *******************************************************************************/
-      Pessoa(unsigned int _id, string _nome, unsigned int _idade, char _genero,  unsigned int _cep, string _escolaridade);
+      Pessoa(unsigned int _id, string _nome, unsigned int _idade, string _genero,  unsigned int _cep, string _escolaridade);
 
       /** ******************************************************************************
       *
@@ -131,6 +140,17 @@ class Pessoa
 	  unsigned int getId() const;
 
       /** ******************************************************************************
+      *  Funcao: setId
+      *
+      *  Descricao da funcao:
+      *      Insere o valor do identificador da classe Pessoa.
+      *
+      * @param id - Valor de identifiucação única da classe.
+      *
+      ** *******************************************************************************/
+      void setId(unsigned int id);
+
+      /** ******************************************************************************
       *  Funcao: setNome
       *
       *  Descricao da funcao:
@@ -139,7 +159,7 @@ class Pessoa
       * @param  _nome - Nome da pessoa.
       *
       ** *******************************************************************************/
-      void setNome(string _nome );
+      void setNome(string _nome);
 
       /** ******************************************************************************
       *  Funcao: getNome
@@ -186,7 +206,7 @@ class Pessoa
       * @param  _genero - Genero da pessoa. Deve ser M para masculino ou F para feminino.
       *
       ** *******************************************************************************/
-      void setGenero(char _genero );
+      void setGenero(string _genero );
 
       /** ******************************************************************************
       *  Funcao: getGenero
@@ -197,7 +217,7 @@ class Pessoa
       * @return  genero  - Genero da pessoa.
       *
       ** *******************************************************************************/
-      char getGenero() const;
+      string getGenero() const;
 
       /** ******************************************************************************
       *  Funcao: setGenero
@@ -259,6 +279,14 @@ class Pessoa
       *
       ** *******************************************************************************/
       string getEscolaridade() const;
+
+      bool inserirInteresse(string interesse);
+      void inserirTransacao(int idTransacao);
+      void inserirAvaliacao(int idAvaliacao);
+
+      string getInteresse(int ordemInteresse);
+
+      string pessoaJson() const;
 };
 
 #endif

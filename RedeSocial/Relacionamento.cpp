@@ -16,7 +16,7 @@
 
 /* inclusão do módulo de definição */
 
-#include "Relacionamento.h"
+#include "relacionamento.h"
 
 /*****  Código das funções exportadas pela classe  *****/
 Relacionamento::Relacionamento(const Pessoa *_origem,  const Pessoa *_destino)
@@ -36,6 +36,22 @@ const Pessoa* Relacionamento::getOrigem() const
 
 const Pessoa* Relacionamento::getDestino() const
 {
-   return destino;
+    return destino;
+}
+
+string Relacionamento::relacionamentoJson() const
+{
+    string json;
+    stringstream idOriString;
+    stringstream idDesString;
+
+    int idO = getOrigem()->getId();
+    int idD = getDestino()->getId();
+
+    idOriString << idO;
+    idDesString << idD;
+
+    json = "{\"idOrigem\":" + idOriString.str() + "," + "\"idDestino\":" + idDesString.str() + "}";
+    return json;
 }
 

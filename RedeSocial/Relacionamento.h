@@ -22,9 +22,13 @@
 #ifndef RelacionamentoH
 #define RelacionamentoH
 
+/* Inclusão do compilador */
+#include <sstream>
+#include <iostream>
+
 /* Inclusoes de modulo de definicao */
 
-#include "Pessoa.h"
+#include "pessoa.h"
 
 /** ********************************************************************************
  * Classe: Relacionamento
@@ -99,6 +103,8 @@ class Relacionamento
       *
       ** *******************************************************************************/
 	  const Pessoa *getDestino() const;
+
+          string relacionamentoJson() const;
 };
 
 #endif

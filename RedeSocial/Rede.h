@@ -23,14 +23,21 @@
 #define RedeH
 
 /* Inclusão do compilador */
-
 #include <list>
+#include <queue>
+#include <stack>
+#include <string>
+#include <cstdio>
+#include <fstream>
+#include <iostream>
 
 /* inclusão do módulo de definição */
 
-#include "Pessoa.h"
-#include "Relacionamento.h"
+#include "pessoa.h"
+#include "transacao.h"
+#include "relacionamento.h"
 
+#include "json.hpp"
 
 /** ********************************************************************************
  * Classe: Rede
@@ -56,7 +63,14 @@ class Rede
     protected:
       string nome;
       bool direcionado; // VERIFICAR SE CONVÉM RETIRAR????
-      unsigned int identificador;
+      unsigned int idPessoa;
+      unsigned int idTransacao;
+      unsigned int idColaboracao;
+
+
+      /*****  Interface das funções exportadas pela classe  *****/
+      public:
+
       /* Lista de pessoas da rede social */
       list<Pessoa *> listaPessoas;
 
@@ -66,7 +80,9 @@ class Rede
       /* Lista de relacionamentos existente de uma  pessoas ate outra na rede social */
       list<Relacionamento *> caminhoRelacionamentos;
 
-      /*****  Interface das funções internas da classe  *****/
+      /* Lista de Transacoes */
+      list<Transacao *> transacoes;
+
 
       /** ******************************************************************************
       *  Funcao: *procuraPonteiroPessoaNome
@@ -124,8 +140,7 @@ class Rede
       ** *******************************************************************************/
       Relacionamento* procuraRelacionamentoPorCaminhoId( unsigned int idOrigem, unsigned int idDestino );
 
-   /*****  Interface das funções exportadas pela classe  *****/
-   public:
+
       /** ******************************************************************************
       *
       *  Descricao da funcao:
@@ -176,7 +191,7 @@ class Rede
       *              _idade, _id e _cep devem ser inteiros sem sinal.
       *
       ** *******************************************************************************/
-      void inserePessoa(string nome, unsigned int idade, char genero, unsigned int cep, string escolaridade);
+      void inserePessoa(string nome, unsigned int idade, string genero, unsigned int cep, string escolaridade);
 
       /** ******************************************************************************
       *  Funcao: removePessoaPorId
@@ -233,7 +248,7 @@ class Rede
       * social.
       *
       ** *******************************************************************************/
-      void insereRelacionamentoPorNome( string nomeOrigem, string nomeDestino);
+      void iniciarRelacionamentoPorNome( string nomeOrigem, string nomeDestino);
 
       /** ******************************************************************************
       *  Funcao: insereRelacionamentoPorId
@@ -249,7 +264,7 @@ class Rede
       *         As pessoas que possuem idOrigem e idDestino devem pertencer a rede social.
       *
       ** *******************************************************************************/
-      void insereRelacionamentoPorId( int idOrigem, int idDestino);
+      void iniciarRelacionamentoPorId( int idOrigem, int idDestino);
 
       /** ******************************************************************************
       *  Funcao: removeRelacionamentoPorCaminhoNome
@@ -324,6 +339,20 @@ class Rede
       *
       ** *******************************************************************************/
       void limpa();
+
+
+      void iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor);
+
+      void inserirTransacao(unsigned int id, Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor, bool finalizada);
+
+      void guardarRedeJson(string arquivo);
+
+      string redeJson();
+
+      bool criarRedeJson(string arquivo);
+      bool inserirPessoasJson(json js);
+      bool inserirTransacaoJson(json js);
+      bool inserirRelacionamentoJson(json js);
 };
 
 #endif

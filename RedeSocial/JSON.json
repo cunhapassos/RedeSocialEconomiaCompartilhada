@@ -1,0 +1,42 @@
+{
+    "ListaPessoas":[
+        {
+            "id": ,
+            "cep": ,
+            "nome": ,
+            "idade": ,
+            "genero": ,
+            "escolaridade": ,
+            "interesses":[
+                "interesses", ....
+            ],
+            "transacoes":[
+                    "idTransacao", ....
+
+            ],
+            "avaliacoes":[
+                    "idAvalicao", .....
+            ]
+
+        },
+
+    ],
+    "ListaRelacionamentos":[
+        {
+            "idOrigem": ,
+            "idDestino":
+
+        },
+        {},
+    ],
+    "transacoes":[
+        {
+            "id": ,
+            "IdFornecedor": ,
+            "IdConsumidor": ,
+            "intersseFornecedor": ,
+            "interesseSolicitante":
+        },
+
+    ]
+}

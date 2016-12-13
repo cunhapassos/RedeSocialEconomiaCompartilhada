@@ -16,9 +16,9 @@
 
 /* inclusão do módulo de definição */
 
-#include "Pessoa.h"
+#include "pessoa.h"
 //---------------------------------------------------------------------------
-Pessoa::Pessoa(unsigned int _id, string _nome, unsigned int _idade, char _genero, unsigned int _cep, string _escolaridade)
+Pessoa::Pessoa(unsigned int _id, string _nome, unsigned int _idade, string _genero, unsigned int _cep, string _escolaridade)
 {
    id = _id;
    setNome( _nome );
@@ -35,8 +35,14 @@ Pessoa::~Pessoa()
 //--------------------------------------------------------------------------- /
 unsigned int Pessoa::getId() const
 {
-   return id;
+    return id;
 }
+
+void Pessoa::setId(unsigned int id)
+{
+    this->id = id;
+}
+
 //---------------------------------------------------------------------------
 void Pessoa::setNome( string _nome )
 {
@@ -68,12 +74,12 @@ unsigned int Pessoa::getIdade() const
    return idade;
 }
 //---------------------------------------------------------------------------
-void Pessoa::setGenero(char _genero)
+void Pessoa::setGenero(string _genero)
 {
    genero = _genero;
 }
 //---------------------------------------------------------------------------
-char Pessoa::getGenero() const
+string Pessoa::getGenero() const
 {
    return genero;
 }
@@ -98,3 +104,72 @@ string Pessoa::getEscolaridade() const
    return escolaridade;
 }
 //---------------------------------------------------------------------------
+bool Pessoa::inserirInteresse(string interesse)
+{
+    if(interesse.size() < 200 && interesses.size() < 20) {
+        interesses.push_back(interesse);
+        return true;
+    }
+    return false;
+}
+
+void Pessoa::inserirTransacao(int idTransacao)
+{
+    transacoes.push_back(idTransacao);
+}
+
+void Pessoa::inserirAvaliacao(int idAvaliacao)
+{
+    avaliacoes.push_back(idAvaliacao);
+}
+
+string Pessoa::getInteresse(int ordemInteresse)
+{
+    if(ordemInteresse < 20) return interesses[ordemInteresse];
+    return "";
+}
+
+string Pessoa::pessoaJson() const
+{
+    string json;
+    string aux1;
+
+    stringstream aux2;
+    stringstream aux3;
+    stringstream aux4;
+
+    stringstream idString;
+    stringstream cepString;
+    stringstream idadeString;
+
+    idString << getId();
+    cepString << getCep();
+    idadeString << getIdade();
+
+    json = "{\"id\":" + idString.str() + "," +
+            "\"cep\":" + cepString.str() + ',' +
+            "\"nome\":\"" + getNome() + "\"," +
+            "\"idade\":" + idadeString.str() + ',' +
+            "\"genero\":\"" + getGenero() + "\"," +
+            "\"escolaridade\":\"" + getEscolaridade() + "\",";
+
+    copy(interesses.begin(), interesses.end(), ostream_iterator<string>(aux2, "\",\""));
+    aux1 = aux2.str();
+    if(aux1.length() > 0){
+        aux1 = "\"" + aux1.substr(0, aux1.length()-1);
+    }
+    aux1 = aux1.substr(0, aux1.length()-1);
+    json = json + "\"interesses\":[" + aux1 + "],";
+
+    copy(transacoes.begin(), transacoes.end(), ostream_iterator<int>(aux3, ","));
+    aux1 = aux3.str();
+    aux1 = aux1.substr(0, aux1.length()-1);
+    json = json + "\"transacoes\":[" + aux1 + "],";
+
+    copy(avaliacoes.begin(), avaliacoes.end(), ostream_iterator<int>(aux4, ","));
+    aux1 = aux4.str();
+    aux1 = aux1.substr(0, aux1.length()-1);
+    json = json + "\"avaliacoes\":[" + aux1 + "]}";
+
+    return json;
+}

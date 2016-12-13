@@ -1,15 +1,17 @@
 //---------------------------------------------------------------------------
-#include "Rede.h"
-#include <queue>
-#include <stack>
+#include "rede.h"
+
 #define INFINITO 9999999
 using namespace std;
+
 //---------------------------------------------------------------------------
 Rede::Rede(string _nome,  bool _direcionado )
 {
    nome = _nome;
    direcionado = _direcionado;
-   identificador = 0;
+   idPessoa = 0;
+   idTransacao = 0;
+   idColaboracao = 0;
 }
 //---------------------------------------------------------------------------
 Rede::~Rede()
@@ -23,10 +25,10 @@ string Rede::getNome()
 }
 
 //---------------------------------------------------------------------------
-void Rede::inserePessoa(string nome, unsigned int idade, char genero, unsigned int cep, string escolaridade)
+void Rede::inserePessoa(string nome, unsigned int idade, string genero, unsigned int cep, string escolaridade)
 {
-   identificador++;
-   Pessoa *pessoa = new Pessoa( identificador, nome, idade, genero, cep, escolaridade);
+   idPessoa++;
+   Pessoa *pessoa = new Pessoa( idPessoa, nome, idade, genero, cep, escolaridade);
    listaPessoas.push_back( pessoa );
 }
 //---------------------------------------------------------------------------
@@ -120,6 +122,7 @@ Pessoa* Rede::procuraPonteiroPessoaNome( string nome )
          retorno = (*posicaoListaPessoa);
          break;
       }
+      posicaoListaPessoa++;
    }
 
    return retorno;
@@ -165,7 +168,7 @@ bool Rede::procuraPessoaNome( string nome )
 }
 
 //---------------------------------------------------------------------------
-void Rede::insereRelacionamentoPorNome(string nomeOrigem, string nomeDestino)
+void Rede::iniciarRelacionamentoPorNome(string nomeOrigem, string nomeDestino)
 {
    const Pessoa* pessoaOrigem = procuraPonteiroPessoaNome( nomeOrigem );
    const Pessoa* pessoaDestino = procuraPonteiroPessoaNome( nomeDestino );
@@ -176,8 +179,9 @@ void Rede::insereRelacionamentoPorNome(string nomeOrigem, string nomeDestino)
       listaRelacionamentos.push_back( relacionamento );
    }
 }
+
 //---------------------------------------------------------------------------
-void Rede::insereRelacionamentoPorId(int idOrigem, int idDestino)
+void Rede::iniciarRelacionamentoPorId(int idOrigem, int idDestino)
 {
    const Pessoa* pessoaOrigem = procuraPonteiroPessoaId( idOrigem );
    const Pessoa* pessoaDestino = procuraPonteiroPessoaId( idDestino );
@@ -276,7 +280,6 @@ void Rede::limpa()
    listaPessoas.clear();
 }
 
-
 Relacionamento* Rede::procuraRelacionamentoPorCaminhoId( unsigned int idOrigem, unsigned int idDestino )
 {
    Relacionamento* relacionamento = NULL;
@@ -299,6 +302,257 @@ Relacionamento* Rede::procuraRelacionamentoPorCaminhoId( unsigned int idOrigem, 
    }
 
    return relacionamento;
+}
+
+void Rede::iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor)
+{
+    idTransacao++;
+
+    Transacao *tra = new Transacao(idTransacao, solicitante->getId(), fornecedor->getId(), inteSoliciatante, inteFornecedor);
+    transacoes.push_back(tra);
+}
+
+void Rede::inserirTransacao(unsigned int id, Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor, bool finalizada)
+{
+    Transacao *tra = new Transacao(id, solicitante->getId(), fornecedor->getId(), inteSoliciatante, inteFornecedor);
+
+    tra->setFim(finalizada); // Atualiza transação como finalizada ou não
+    transacoes.push_back(tra);
+    /* Para atualizar o valor do contador de transacoes, responsavel pelos ids de transacoes*/
+    if(idTransacao < id){
+        idTransacao = id;
+    }
+}
+
+void Rede::guardarRedeJson(string arquivo)
+{
+    using json = nlohmann::json;
+
+    // read a JSON file
+    //std::ifstream i("teste.json");
+    // i >> j;
+    //cout << jsonS;
+    json j = json::parse(redeJson());
+
+
+    ofstream o(arquivo);
+    o << setw(4) << j << endl;
+}
+
+string Rede::redeJson()
+{
+    int aux1, aux2;
+    string json;
+
+    list<Pessoa *>::iterator k;
+    list<Transacao *>::iterator j;
+    list<Relacionamento *>::iterator i;
+
+    json = "{\"ListaPessoas\":[";
+    for( k = listaPessoas.begin() ; k != listaPessoas.end() ; k++ ){
+        json = json + (*k)->pessoaJson() + ",";
+    }
+    json = json.substr(0, json.length()-1); // retira ultima virgula a direita
+
+    json = json + "], \"ListaRelacionamentos\":[";
+    aux1 = json.length();
+    for( i = listaRelacionamentos.begin() ; i != listaRelacionamentos.end() ; i++ ){
+        json = json + (*i)->relacionamentoJson() + ",";
+    }
+    aux2 = json.length();
+    if (aux2 > aux1){
+        json = json.substr(0, json.length()-1); // retira ultima virgula a direita
+    }
+    json = json + "],\"transacoes\":[";
+    aux1 = json.length();
+    for( j = transacoes.begin() ; j != transacoes.end() ; j++ ){
+        json = json + (*j)->transacaoJson() + ",";
+    }
+    aux2 = json.length();
+    if(aux2 > aux1){
+        json = json.substr(0, json.length()-1); // retira ultima virgula a direita
+    }
+    json = json + "]}";
+
+    return json;
+
+}
+
+bool Rede::criarRedeJson(string arquivo)
+{
+    std::ifstream i(arquivo);
+    json j;
+    i >> j;
+
+    for (json::iterator it = j.begin(); it != j.end(); ++it) {
+        //cout << it.key() << endl;
+        if(it.key() == "ListaPessoas"){
+            for(auto& elem : *it){
+                //cout << elem << "\n\n";
+                inserirPessoasJson(elem);
+            }
+        }
+        if(it.key() == "ListaRelacionamentos"){
+            for(auto& elem : *it){
+                //INSEREIR FUNCAO PARA INSERIR RELACIONAMENTOS NA REDE
+                //cout << elem << "\n\n";
+                inserirRelacionamentoJson(elem);
+            }
+        }
+        if(it.key() == "transacoes"){
+            for(auto& elem : *it){
+                //cout << elem << "\n\n";
+                inserirTransacaoJson(elem);
+            }
+         }
+    }
+
+    return true;
+}
+
+bool Rede::inserirPessoasJson(json js)
+{
+    if(js.empty()) return false;
+
+    json j1, j2, j3;
+
+    Pessoa *p1;
+    string nomeJ;
+    string generoJ;
+
+    unsigned int idJ;
+    unsigned int cepJ;
+    unsigned int idadeJ;
+    unsigned int idPessoaJ;
+    string escolaridadeJ;
+    vector<string> interessesJ;
+
+    for (json::iterator it = js.begin(); it != js.end(); ++it)
+    {
+        if (it.key() == "id") {
+            idJ = it.value();
+            continue;
+        }
+        if (it.key() == "cep") {
+            cepJ = it.value();
+            continue;
+        }
+        if (it.key() == "nome") {
+            nomeJ = it.value();
+            continue;
+        }
+        if (it.key() == "idade") {
+            idadeJ = it.value();
+            continue;
+        }
+        if (it.key() == "genero") {
+            generoJ = it.value();
+            continue;
+        }
+        if (it.key() == "escolaridade") {
+            escolaridadeJ = it.value();
+            continue;
+        }
+        if (it.key() == "interesses") {
+            j1 = *it;
+            continue;
+        }
+        if (it.key() == "transacoes") {
+            j2 = *it;
+            continue;
+        }
+        if (it.key() == "avaliacoes") {
+            j3 = *it;
+            continue;
+        }
+    }
+
+    inserePessoa(nomeJ, cepJ, generoJ, idadeJ, escolaridadeJ);
+    p1 = procuraPonteiroPessoaNome(nomeJ);
+    p1->setId(idJ); // necessário para dar o id que foi dado a pessoa inicialmente
+
+    /* Para atualizar o valor do contador de Pessoas da rede */
+    if(idPessoa < idJ){
+        idPessoa = idJ;
+    }
+
+    for(auto& elem : j1)
+    {
+        p1->inserirInteresse(elem);
+    }
+    for(auto& elem : j2)
+    {
+        p1->inserirTransacao(elem);
+    }
+    for(auto& elem : j3)
+    {
+        p1->inserirAvaliacao(elem);
+    }
+    return true;
+}
+
+bool Rede::inserirTransacaoJson(json js)
+{
+    if(js.empty()) return false;
+
+
+    Pessoa *p1, *p2;
+
+    unsigned int idJ;
+    bool finalizadaJ; // Verificar se acrescenta depois
+
+    string intersseFornecedorJ;
+    string interesseSolicitanteJ;
+
+    for (json::iterator it = js.begin(); it != js.end(); ++it)
+    {
+        if (it.key() == "IdFornecedor") {
+            p1 = procuraPonteiroPessoaId(it.value());
+            continue;
+        }
+        if (it.key() == "IdConsumidor") {
+            p2 = procuraPonteiroPessoaId(it.value());
+            continue;
+        }
+        if (it.key() == "intersseFornecedor") {
+            intersseFornecedorJ =it.value();
+            continue;
+        }
+        if (it.key() == "interesseSolicitante") {
+            interesseSolicitanteJ = it.value();
+            continue;
+        }
+        if (it.key() == "finalizada") {
+            finalizadaJ = it.value();
+            continue;
+        }
+     }
+    inserirTransacao(idJ, p1, p2, intersseFornecedorJ , interesseSolicitanteJ, finalizadaJ );
+    // p1- // Inserir na lsita de transações da pessoa
+    return true;
+}
+
+bool Rede::inserirRelacionamentoJson(json js)
+{
+    if(js.empty()) return false;
+
+    int id1, id2;
+
+    for (json::iterator it = js.begin(); it != js.end(); ++it)
+    {
+        if (it.key() == "idOrigem") {
+            id1 = it.value();
+            continue;
+        }
+        if (it.key() == "idDestino") {
+            id2 = it.value();
+            continue;
+        } 
+    }
+    iniciarRelacionamentoPorId(id1, id2);
+
+    return true;
+
 }
 
 
