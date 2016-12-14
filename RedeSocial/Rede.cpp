@@ -109,6 +109,7 @@ void Rede::removePessoaPorNome( string nome )
    }
 }
 
+
 Pessoa* Rede::procuraPonteiroPessoaNome( string nome )
 {
    Pessoa* retorno  = NULL;
@@ -280,6 +281,123 @@ void Rede::limpa()
    listaPessoas.clear();
 }
 
+//---------------------------------------------------------------------------
+Pessoa *Rede::getRelacionamentoAdjacenteNaoVisitado(unsigned int id)
+{
+   Pessoa* idAdjacente = NULL;
+   list<Relacionamento *>::iterator posicaoListaRelacionamentos = listaRelacionamentos.begin();
+
+   while ( posicaoListaRelacionamentos != listaRelacionamentos.end() )
+   {
+      if ( ( (*posicaoListaRelacionamentos)->getOrigem()->getId() == id )  &&
+           ( (*posicaoListaRelacionamentos)->getDestino()->getVisitado() == false )
+         )
+      {
+         idAdjacente = procuraPonteiroPessoaId( (*posicaoListaRelacionamentos)->getDestino()->getId() );
+         break;
+      }
+
+      //if ( !direcionado ) RETIRAR
+      //{ RETIRAR
+          if ( ( (*posicaoListaRelacionamentos)->getDestino()->getId() == id )  &&
+               ( (*posicaoListaRelacionamentos)->getOrigem()->getVisitado() == false )
+            )
+          {
+              idAdjacente = procuraPonteiroPessoaId( (*posicaoListaRelacionamentos)->getOrigem()->getId() );
+              break;
+          }
+      //} RETIRAR
+
+      posicaoListaRelacionamentos++;
+   }
+
+   return idAdjacente;
+}
+//---------------------------------------------------------------------------
+
+bool Rede::arvoreGeradoraMinima( unsigned int idOrigem )
+{
+    bool retorno = false;
+    unsigned int numeroPessoasChecadas = 0;
+    list<Relacionamento *> arvore;
+
+    Pessoa* p1 = procuraPonteiroPessoaId( idOrigem );
+    Relacionamento* r1 = NULL;
+    std::stack<unsigned int> *pilhaPessoas = new std::stack<unsigned int>;
+
+    pilhaPessoas->push( p1->getId() );
+    numeroPessoasChecadas++;
+
+    p1->setVisitado(true);
+
+    while ( !(pilhaPessoas->empty()) )
+    {
+
+
+       unsigned int idNoAtual = pilhaPessoas->top();
+       //pega proximo no adjacente nao visitado
+       p1 = getRelacionamentoAdjacenteNaoVisitado( idNoAtual );
+
+       if ( p1 == NULL) // sem mais nos adjacentes
+       {
+          pilhaPessoas->pop();
+       }
+       else
+       {
+          p1->setVisitado( true ); //marca como visitado
+          pilhaPessoas->push( p1->getId() ); //coloca na pilha
+          numeroPessoasChecadas++; //contagem de pessoas checados
+          r1 = procuraRelacionamentoPorCaminhoId( idNoAtual, p1->getId() );
+          if ( r1 == NULL )
+          {
+             r1 = procuraRelacionamentoPorCaminhoId( p1->getId() , idNoAtual );
+          }
+
+          if ( r1 != NULL )
+          {
+             arvore.push_back(r1);
+             r1 = NULL;
+          }
+
+       }
+    }
+
+    //limpa nos visitados
+    list<Pessoa *>::iterator posicaoListaPessoas = listaPessoas.begin();
+
+    while ( posicaoListaPessoas != listaPessoas.end() )
+    {
+       (*posicaoListaPessoas)->setVisitado(false);
+       posicaoListaPessoas++;
+    }
+
+    caminhoRelacionamentos.clear();
+    if ( numeroPessoasChecadas == numeroPessoas() )
+    {
+        caminhoRelacionamentos = arvore;
+        retorno = true;
+
+    }
+
+    return retorno;
+}
+
+//---------------------------------------------------------------------------
+
+void Rede::imprimirCaminhoRelacionamentos()
+{
+    Pessoa* p1 = NULL;
+    list<Relacionamento *>::iterator posicaoListaCaminhos = caminhoRelacionamentos.begin();
+
+    while ( posicaoListaCaminhos != caminhoRelacionamentos.end() )
+    {
+       cout << "Origem: " << (*posicaoListaCaminhos)->getOrigem()->getNome() << " Destino: " << (*posicaoListaCaminhos)->getDestino()->getNome() << "\n";
+       posicaoListaCaminhos++;
+    }
+}
+
+//---------------------------------------------------------------------------
+
 Relacionamento* Rede::procuraRelacionamentoPorCaminhoId( unsigned int idOrigem, unsigned int idDestino )
 {
    Relacionamento* relacionamento = NULL;
@@ -303,6 +421,167 @@ Relacionamento* Rede::procuraRelacionamentoPorCaminhoId( unsigned int idOrigem, 
 
    return relacionamento;
 }
+
+//---------------------------------------------------------------------------
+ bool Rede::menorCaminho( unsigned int idOrigem, unsigned int idDestino )
+{
+// ARRUMAR PARA TRABALHAR COM NAO DIRECIONADO
+   bool retorno = false;
+   Pessoa* origemCaminho =  procuraPonteiroPessoaId( idOrigem );
+   Pessoa* destinoCaminho = procuraPonteiroPessoaId( idDestino );
+
+   if ( ( origemCaminho !=  NULL ) && ( destinoCaminho != NULL ) )
+   {
+      //define que existe um menor caminho (previamente)
+      retorno  = true;
+
+      //variaveis para auxiliar calculo
+      unsigned int numeroPessoas = idPessoa; //considera o numero de pessoas como o numero de ids criados
+      unsigned int atual, auxiliarTroca; //caminha pela matriz de adjancencia para calculcar caminho
+      double novaDistancia, distanciaAtual, menorDistancia; //variaveis auxiliares calculo de distancia
+     //  int  anterior, aux_troca, percurso;
+
+      // Alocacao dinamica de matrizes e vetores.
+      double **matrizAdjacencia = new double*[numeroPessoas]; //cria caminho e distancias em matriz para facilitar calculo menor caminho
+      double *distancia = new double[numeroPessoas]; //armazena distancia calculcados entre caminhos
+      bool *veriricados =  new bool[numeroPessoas]; //lista de nos verificados
+      unsigned int *caminho = new unsigned int[numeroPessoas]; //armzena o caminho encontrado  ????
+
+      // Cria a segunda dimensao da matriz de adjacencias
+      for(unsigned int i = 0; i < numeroPessoas; i++)
+      {
+         matrizAdjacencia[i] = new double[numeroPessoas];
+      }
+      //inicilia matriz de adjancencias com todos caminhos inifitos
+      for(unsigned int i = 0; i < numeroPessoas; i++)
+      {
+          for(unsigned int j = 0; j < numeroPessoas; j++)
+          {
+             matrizAdjacencia[i][j] = INFINITO;
+          }
+      }
+
+      // traz valores dos caminhos reais para matriz de adjacencias (transfere de lista para matriz)
+      list<Relacionamento *>::iterator posicaoListaRelacionamento = listaRelacionamentos.begin();
+      unsigned int idOrigemAux, idDestinoAux;
+      while ( posicaoListaRelacionamento != listaRelacionamentos.end() )
+      {
+         idOrigemAux = (*posicaoListaRelacionamento)->getOrigem()->getId();
+         idDestinoAux = (*posicaoListaRelacionamento)->getDestino()->getId();
+
+         matrizAdjacencia[idOrigemAux-1][idDestinoAux-1] = 1;
+         matrizAdjacencia[idDestinoAux-1][idOrigemAux-1] = 1;
+
+         posicaoListaRelacionamento++;
+      }
+
+
+      // Inicializa todos os elementos do vetor conjunto com NAOMEMBRO, os
+      // do vetor distancia com INFINITO, e os do vetor caminho com zero.
+      for(unsigned int i = 0; i < numeroPessoas; i++)
+      {
+         veriricados[i]  = false;
+         distancia[i] = INFINITO;
+         caminho[i]   = 0;
+      }
+
+      //iniciliza valores de origem como verificado e distancia de si mesmo 0
+      idOrigem--;
+      idDestino--;
+      veriricados[idOrigem]  = true;
+      distancia[idOrigem] = 0;
+
+      // Define a origem como o inicio da busca
+      atual = idOrigem;
+      auxiliarTroca = atual;
+
+      //calcula distancia  e encontra caminho
+      while( atual != idDestino )
+      {
+         menorDistancia = INFINITO;
+         distanciaAtual = distancia[atual];
+
+         for(unsigned int i = 0; i < numeroPessoas; i++)
+         {
+            // Verifica se o elemento NAO esta no vetor conjunto.
+            if( veriricados[i] == false )
+            {
+               // Calcula a distancia a partir do vertice atual ate vertice adjacente i.
+               novaDistancia = distanciaAtual + matrizAdjacencia[atual][i];
+
+               // Se a distancia, partindo do vertice atual, for menor,
+               // atualiza o vetor de distancia e de precedencia.
+               if( novaDistancia < distancia[i] )
+               {
+                  distancia[i] = novaDistancia;
+                  caminho[i]   = atual;
+               }
+
+               // Determina o vertice (dentre todos os nao pertencentes ao
+               // vetor conjunto) com a menor distancia.
+               if( distancia[i] < menorDistancia )
+               {
+                  menorDistancia = distancia[i];
+                  auxiliarTroca = i;
+               }
+            }
+         }
+
+         // Embora estejamos assumindo grafos ponderados e conexos, esta
+         // verificacao garante que, em caso da nao existencia de um caminho,
+         // o programa nao entre em loop infinito.
+         if( atual == auxiliarTroca )
+         {
+            retorno = false;     // O caminho nao existe.
+            break;
+         }
+
+         atual = auxiliarTroca;
+         veriricados[atual] = true;
+      }
+
+       //se caminho encontrado marca para desenho
+      if(retorno)
+      {
+
+        // Percorre o vetor dos menores caminhos para encontrar as pessoas
+        // e relacionamentsos que fazem parte do percurso.
+     unsigned int percurso = idDestino;
+     unsigned int anterior = idDestino+1;
+     Relacionamento *rel;
+     caminhoRelacionamentos.clear();
+     while(percurso != idOrigem)
+     {
+        rel = procuraRelacionamentoPorCaminhoId( caminho[percurso]+1, anterior);
+        if ( !direcionado && ( rel == NULL ) )
+        {
+           rel = procuraRelacionamentoPorCaminhoId( anterior, caminho[percurso]+1 );
+        }
+
+        if ( rel != NULL )
+        {
+           caminhoRelacionamentos.push_back( rel );
+        }
+
+        anterior = (caminho[percurso] + 1);
+        percurso = caminho[percurso];
+      }
+
+      }
+
+     //limpa memoria
+     for( unsigned int i = 0; i < numeroPessoas; i++ )
+     {
+        delete[] matrizAdjacencia[i];
+     }
+     delete[] matrizAdjacencia;
+     delete[] caminho;
+     delete[] veriricados;
+     delete[] distancia;
+   }
+   return retorno;
+}
+//---------------------------------------------------------------------------
 
 void Rede::iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor)
 {

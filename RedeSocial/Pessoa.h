@@ -67,7 +67,7 @@ class Pessoa
    public:
       vector<string> interesses;
       vector<int> transacoes; // Lista de id das transacoes que a passoa participou
-      vector<int> avaliacoes; // Lista de id das avaliacoes da pessoa
+      vector<int> avaliacoes; // Lista das avaliacoes da pessoa
 
       /** ******************************************************************************
       *

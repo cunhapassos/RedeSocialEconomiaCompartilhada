@@ -7,3 +7,13 @@
 18/11/2016   |      4h           | codificar módulo        | Refatoração, renomemeação e passagem de código existente do módulo  |
              |                   |                         |de grafo do paradigma estruturado para o paradigma orientado a objeto|
 -------------|-------------------|-------------------------|---------------------------------------------------------------------|
+12/12/2016   |      2h           | Teste                   | Reteste do código refatorado, correção de erros, elaboração de novos|
+             |                   |                         |testes,  refatoração de de código                                    |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+13/12/2016   |      1h           |Estudo                   | Estudo de como calcular distancia entre pessoas da rede             |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+13/12/2016   |      3h           |Estudo                   | Como implementar interface gráfica                                  |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+13/12/2016   |      3h20         |Codificar                | Elaboração de testes para o calculo de distancia da rede, elaboração|
+             |                   |                         |das funções de calculo de distancia, correção de erros e refatoração |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|

@@ -36,7 +36,23 @@ int main(int argc, char *argv[])
     cout << rede->procuraPessoaNome("Tavares") << "\n";
     cout << rede->procuraPessoaNome("Thais") << "\n";
 
+
     cout << "Numero de Pessoas na rede: " << rede->numeroPessoas() << "\n";
+
+
+    // TESTA MENOR CAMINHO
+    cout << "Imprime Caminho de Relacionamentos \n";
+    rede->arvoreGeradoraMinima(5); // Primeiro deve criar a arvore geradora
+    rede->imprimirCaminhoRelacionamentos(); // VER SE DEVE MODIFICAR< ele considera (A, B) = (B, A)
+
+    cout << "Imprime menor Caminho de de uma origem ate um destino \n";
+
+
+    // CUIDADO NA DEVE-SE VER O CASO DE NÃO EXISTIR O CAMINHO
+    if(rede->menorCaminho(1, 3)){
+        rede->imprimirCaminhoRelacionamentos();
+        cout << "Disantancia de 1 a 3: " << rede->caminhoRelacionamentos.size() << "\n"; // verifica a distancia de 1 a 3;
+    }
     //rede->inserirPessoasJson(j);
  //====================================================================
 

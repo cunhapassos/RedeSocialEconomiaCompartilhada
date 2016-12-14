@@ -68,6 +68,19 @@ class Rede
       unsigned int idColaboracao;
 
 
+      /** ******************************************************************************
+      *  Funcao: *getRelacionamentoAdjacenteNaoVisitado
+      *
+      *  Descricao da funcao:
+      *      Procura uma pessoa, na lista de pessoas da rede social, que ainda nao foi
+      * visitada.
+      *
+      * @param    id      - ID da pessoa a ser procurada.
+      *
+      *
+      ** *******************************************************************************/
+      Pessoa* getRelacionamentoAdjacenteNaoVisitado( unsigned int id );
+
       /*****  Interface das funções exportadas pela classe  *****/
       public:
 
@@ -339,6 +352,40 @@ class Rede
       *
       ** *******************************************************************************/
       void limpa();
+
+      /** ******************************************************************************
+      *  Funcao: arvoreGeradoraMinima
+      *
+      *  Descricao da funcao:
+      *      Cria a arvore geradora minima a partir do id de uma Pessoa de origem
+      *
+      * @param idOrigem - Identificador da pessoa de origem
+      *
+      *
+      ** *******************************************************************************/
+      bool arvoreGeradoraMinima( unsigned int idOrigem );
+
+      /** ******************************************************************************
+      *  Funcao: imprimirCaminhoRelacionamentos
+      *
+      *  Descricao da funcao:
+      *      Imprime a arvore geradora minima já gerada na rede
+      *
+      ** *******************************************************************************/
+      void imprimirCaminhoRelacionamentos();
+
+      /** ******************************************************************************
+      *  Funcao: menorCaminho
+      *
+      *  Descricao da funcao:
+      *      Retorna a distancia minima entre duas Pessoas na rede
+      *
+      * @param idOrigem     - Identificador da pessoa de origem
+      * @param idDestino    - Identificador da pessoa de destino
+      *
+      *
+      ** *******************************************************************************/
+      bool menorCaminho( unsigned int idOrigem, unsigned int idDestino );
 
 
       void iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor);
