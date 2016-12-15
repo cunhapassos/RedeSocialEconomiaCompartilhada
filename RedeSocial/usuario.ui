@@ -14,17 +14,112 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <widget class="QListWidget" name="listWidgetAmigos">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>30</y>
+      <width>211</width>
+      <height>321</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidgetPessoas">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>221</width>
+      <height>321</height>
+     </rect>
+    </property>
+   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>90</y>
-      <width>291</width>
+      <x>10</x>
+      <y>10</y>
+      <width>121</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Clique no menu Perfil-&gt; Criar Perfil</string>
+     <string>Pessoas da Rede:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>10</y>
+      <width>59</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Amigos:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>10</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Opções para transação:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonIniAmizade">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>221</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Iniciar amizade</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonExcAmizade">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>350</y>
+      <width>211</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Excluir amizade</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidgetInteresses">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>30</y>
+      <width>256</width>
+      <height>321</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonIniTransacao">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>350</y>
+      <width>151</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Inciciar transação</string>
     </property>
    </widget>
   </widget>
@@ -41,18 +136,31 @@
     <property name="title">
      <string>Perfil</string>
     </property>
-    <addaction name="actionCriar_Perfil"/>
     <addaction name="actionEditar_Perfil"/>
     <addaction name="actionExcluir_Perfil"/>
    </widget>
+   <widget class="QMenu" name="menuAmigos">
+    <property name="title">
+     <string>Amigos</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuTransa_es">
+    <property name="title">
+     <string>Transações</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuRede">
+    <property name="title">
+     <string>Rede</string>
+    </property>
+    <addaction name="actionListar_Pessoas"/>
+   </widget>
    <addaction name="menuPerfil"/>
+   <addaction name="menuAmigos"/>
+   <addaction name="menuRede"/>
+   <addaction name="menuTransa_es"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionCriar_Perfil">
-   <property name="text">
-    <string>Criar Perfil</string>
-   </property>
-  </action>
   <action name="actionEditar_Perfil">
    <property name="text">
     <string>Editar Perfil</string>
@@ -61,6 +169,11 @@
   <action name="actionExcluir_Perfil">
    <property name="text">
     <string>Excluir Perfil</string>
+   </property>
+  </action>
+  <action name="actionListar_Pessoas">
+   <property name="text">
+    <string>Listar Pessoas</string>
    </property>
   </action>
  </widget>

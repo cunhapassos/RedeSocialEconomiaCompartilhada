@@ -20,7 +20,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpinBox>
@@ -51,12 +51,12 @@ public:
     QLabel *label_4;
     QComboBox *comboBoxEscolaridade;
     QGroupBox *groupBox_3;
-    QListView *listViewInteresses;
     QPushButton *pushButton_3;
     QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout_3;
-    QLineEdit *lineEdit_3;
+    QLineEdit *lineEditInteresse;
     QPushButton *pushButton_2;
+    QListWidget *listWidgetInteresses;
     QPushButton *pushButtonAdicionar;
     QPushButton *pushButton_4;
 
@@ -143,9 +143,6 @@ public:
         groupBox_3 = new QGroupBox(UsuarioPerfil);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setGeometry(QRect(260, 10, 331, 251));
-        listViewInteresses = new QListView(groupBox_3);
-        listViewInteresses->setObjectName(QStringLiteral("listViewInteresses"));
-        listViewInteresses->setGeometry(QRect(10, 60, 221, 181));
         pushButton_3 = new QPushButton(groupBox_3);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(230, 60, 101, 31));
@@ -155,16 +152,19 @@ public:
         horizontalLayout_3 = new QHBoxLayout(layoutWidget3);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        lineEdit_3 = new QLineEdit(layoutWidget3);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEditInteresse = new QLineEdit(layoutWidget3);
+        lineEditInteresse->setObjectName(QStringLiteral("lineEditInteresse"));
 
-        horizontalLayout_3->addWidget(lineEdit_3);
+        horizontalLayout_3->addWidget(lineEditInteresse);
 
         pushButton_2 = new QPushButton(layoutWidget3);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
         horizontalLayout_3->addWidget(pushButton_2);
 
+        listWidgetInteresses = new QListWidget(groupBox_3);
+        listWidgetInteresses->setObjectName(QStringLiteral("listWidgetInteresses"));
+        listWidgetInteresses->setGeometry(QRect(10, 60, 221, 181));
         pushButtonAdicionar = new QPushButton(UsuarioPerfil);
         pushButtonAdicionar->setObjectName(QStringLiteral("pushButtonAdicionar"));
         pushButtonAdicionar->setGeometry(QRect(480, 270, 113, 32));
@@ -180,7 +180,7 @@ public:
 
     void retranslateUi(QDialog *UsuarioPerfil)
     {
-        UsuarioPerfil->setWindowTitle(QApplication::translate("UsuarioPerfil", "Dialog", 0));
+        UsuarioPerfil->setWindowTitle(QApplication::translate("UsuarioPerfil", "Perfil do Usu\303\241rio", 0));
         groupBox->setTitle(QApplication::translate("UsuarioPerfil", "Dados Pessoais", 0));
         label_5->setText(QApplication::translate("UsuarioPerfil", "CEP:", 0));
         groupBox_2->setTitle(QApplication::translate("UsuarioPerfil", "G\303\252nero:", 0));
@@ -199,7 +199,7 @@ public:
 };
 
 namespace Ui {
-    class UsuarioPerfil: public Ui_UsuarioPerfil {};
+    class CriarPerfil: public Ui_UsuarioPerfil {};
 } // namespace Ui
 
 QT_END_NAMESPACE

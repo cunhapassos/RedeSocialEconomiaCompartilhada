@@ -5,7 +5,6 @@
 #include <QApplication>
 
 #include "rede.h"
-#include "usuario.h"
 #include "gtest/gtest.h"
 #include "json.cpp"
 #include "mainwindow.h"
@@ -14,16 +13,29 @@ int main(int argc, char *argv[])
 {
 
     Rede *rede = new Rede("Economia");
+    Pessoa *p;
     rede->criarRedeJson("rede.json");
     cout << rede->procuraPessoaNome("Thais") << "\n";
-
+    for(list<Pessoa *>::iterator i = rede->listaPessoas.begin() ; i != rede->listaPessoas.end() ; i++ ){
+        cout << (*i)->getNome() << "\n";
+    }
     QApplication a(argc, argv);
     MainWindow w;
     w.addRede(rede);
     w.show();
 
+
+
      a.exec();
-    cout << rede->procuraPessoaNome("Leandro") << "\n";
+
+     if (rede->procuraPessoaNome("Leandro")){
+         p = rede->procuraPonteiroPessoaNome("Leandro");
+         for(vector<string>::iterator i = p->interesses.begin() ; i != p->interesses.end() ; i++ ){
+             cout << (*i) << "\n";
+         }
+     }
+
+
     cout << rede->procuraPessoaNome("Ze") << "\n";
     return 0;
  /*

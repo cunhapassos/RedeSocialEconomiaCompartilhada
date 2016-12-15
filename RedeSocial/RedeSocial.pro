@@ -5,7 +5,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 #CONFIG += c++11
 
 TARGET = RedeSocial
-CONFIG += console
+#CONFIG += console
 CONFIG -= app_bundle
 
 TEMPLATE = app
@@ -19,9 +19,10 @@ SOURCES += main.cpp \
     transacao.cpp \
     json.cpp \
     administrador.cpp \
-    usuarioperfil.cpp \
     usuario.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    criarperfil.cpp \
+    editarperfil.cpp
 
 HEADERS += \
     avaliacao.h \
@@ -30,14 +31,16 @@ HEADERS += \
     relacionamento.h \
     transacao.h \
     administrador.h \
-    usuarioperfil.h \
     usuario.h \
-    mainwindow.h
+    mainwindow.h \
+    criarperfil.h \
+    editarperfil.h
 
 FORMS    += mainwindow.ui \
     usuario.ui \
     administrador.ui \
-    usuarioperfil.ui
+    criarperfil.ui \
+    editarperfil.ui
 
 unix: LIBS += -L$$PWD/./ -lgtest
 

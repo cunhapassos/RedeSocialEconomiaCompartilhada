@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "usuario.h"
 #include "administrador.h"
 #include <QMessageBox>
 
@@ -24,8 +23,11 @@ void MainWindow::on_pushButton_clicked()
     if(ui->radioButtonUsuario->isChecked()) {
         QMessageBox::information(this, "Parabéns", "Seja bem vindo a Rede Social Colaborativa!");
         hide();
-        usuario = new Usuario(this, rede);
-        usuario->show();
+
+        uPerfil = new CriarPerfil(this, rede);
+        uPerfil->main = this;
+        uPerfil->show();
+
     }
     if(ui->radioButtonAdmin->isChecked()) {
 
@@ -33,5 +35,4 @@ void MainWindow::on_pushButton_clicked()
         admin = new Administrador(this);
         admin->show();
     }
-
 }

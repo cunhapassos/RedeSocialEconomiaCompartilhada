@@ -96,6 +96,18 @@ class Rede
       /* Lista de Transacoes */
       list<Transacao *> transacoes;
 
+      /** ******************************************************************************
+      *  Funcao: relacionamentoExiste
+      *
+      *  Descricao da funcao:
+      *      Verifica se um relacionamento existe na rede
+      * visitada.
+      *
+      * @param    pes1      - Nome da pessoa a ser procurada no relacionamento.
+      * @param    pes2      - Nome da pessoa a ser procurada no relacionamento.
+      *
+      ** *******************************************************************************/
+      bool relacionamentoExiste(string pes1, string pes2);
 
       /** ******************************************************************************
       *  Funcao: *procuraPonteiroPessoaNome
@@ -205,6 +217,28 @@ class Rede
       *
       ** *******************************************************************************/
       void inserePessoa(string nome, unsigned int idade, string genero, unsigned int cep, string escolaridade);
+
+      /** ******************************************************************************
+      *  Funcao: editaPessoa
+      *  Descricao da funcao:
+      *      Edita os atributos de uma pessoa da rede social.
+      *
+      *  @param      _nome         - Nome da pessoa.
+      *  @param      _idade        - Idade da pessoa.
+      *  @param      _genero       - Genero da pessoa. Deve ser M para masculino ou F para
+      *                            feminino.
+      *  @param      _cep          - CEP residencial da pessoa. Deve ser um número inteiro.
+      *  @param      _escolaridade - Representa a escolaridade da pessoa. Deve ser uma das
+      *                            seguintes opcoes: primeiro grau incompleto, primeiro
+      *                            grau completo, segundo grau incompleto, segundo grau
+      *                            completo, superior incompleto, superior completo ou
+      *                            pós-graduação.
+      *
+      *  Assertiva de entrada
+      *              _idade, _id e _cep devem ser inteiros sem sinal.
+      *
+      ** *******************************************************************************/
+      void editaPessoa(Pessoa *p, string nome, unsigned int idade, string genero, unsigned int cep, string escolaridade);
 
       /** ******************************************************************************
       *  Funcao: removePessoaPorId

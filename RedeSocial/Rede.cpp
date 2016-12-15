@@ -31,6 +31,15 @@ void Rede::inserePessoa(string nome, unsigned int idade, string genero, unsigned
    Pessoa *pessoa = new Pessoa( idPessoa, nome, idade, genero, cep, escolaridade);
    listaPessoas.push_back( pessoa );
 }
+
+void Rede::editaPessoa(Pessoa *p, string nome, unsigned int idade, string genero, unsigned int cep, string escolaridade)
+{
+    p->setNome(nome);
+    p->setIdade(idade);
+    p->setGenero(genero);
+    p->setCep(cep);
+    p->setEscolaridade(escolaridade);
+}
 //---------------------------------------------------------------------------
 void Rede::removePessoaPorId( unsigned int id )
 {
@@ -282,6 +291,29 @@ void Rede::limpa()
 }
 
 //---------------------------------------------------------------------------
+bool Rede::relacionamentoExiste(string pes1, string pes2){
+
+    if(listaRelacionamentos.empty())
+    {
+        return false;
+    }
+    for(list<Relacionamento *>::iterator i = listaRelacionamentos.begin(); i != listaRelacionamentos.end() ; i++ ){
+        if ( (
+                ( (*i)->getOrigem()->getNome() == pes1 )  &&
+                ( (*i)->getDestino()->getNome() == pes2 )
+              ) ||
+             (
+                ( (*i)->getOrigem()->getNome() == pes2 ) &&
+                ( (*i)->getDestino()->getNome() == pes1 )
+             )
+           )
+        {
+           return true;
+        }
+    }
+    return false;
+}
+//---------------------------------------------------------------------------
 Pessoa *Rede::getRelacionamentoAdjacenteNaoVisitado(unsigned int id)
 {
    Pessoa* idAdjacente = NULL;
@@ -297,16 +329,14 @@ Pessoa *Rede::getRelacionamentoAdjacenteNaoVisitado(unsigned int id)
          break;
       }
 
-      //if ( !direcionado ) RETIRAR
-      //{ RETIRAR
-          if ( ( (*posicaoListaRelacionamentos)->getDestino()->getId() == id )  &&
+
+     if ( ( (*posicaoListaRelacionamentos)->getDestino()->getId() == id )  &&
                ( (*posicaoListaRelacionamentos)->getOrigem()->getVisitado() == false )
             )
-          {
+     {
               idAdjacente = procuraPonteiroPessoaId( (*posicaoListaRelacionamentos)->getOrigem()->getId() );
               break;
-          }
-      //} RETIRAR
+     }
 
       posicaoListaRelacionamentos++;
    }
@@ -386,7 +416,6 @@ bool Rede::arvoreGeradoraMinima( unsigned int idOrigem )
 
 void Rede::imprimirCaminhoRelacionamentos()
 {
-    Pessoa* p1 = NULL;
     list<Relacionamento *>::iterator posicaoListaCaminhos = caminhoRelacionamentos.begin();
 
     while ( posicaoListaCaminhos != caminhoRelacionamentos.end() )
@@ -425,7 +454,6 @@ Relacionamento* Rede::procuraRelacionamentoPorCaminhoId( unsigned int idOrigem, 
 //---------------------------------------------------------------------------
  bool Rede::menorCaminho( unsigned int idOrigem, unsigned int idDestino )
 {
-// ARRUMAR PARA TRABALHAR COM NAO DIRECIONADO
    bool retorno = false;
    Pessoa* origemCaminho =  procuraPonteiroPessoaId( idOrigem );
    Pessoa* destinoCaminho = procuraPonteiroPessoaId( idDestino );
