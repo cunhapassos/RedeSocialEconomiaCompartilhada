@@ -48,13 +48,18 @@
  * e os seus relacionamentos.
  *
  * Requisitos assegurados pela classe:
- *  ?????
+ *  Criação, execução e persistência da estrutura rede criado por suas funções,
+ * contendo estas dados válidos ou inválidos de usuários.
  *
  * Hipóteses assumidas pela classe:
- *  ????
+ *  Execução e requisição de serviços conforme protocolado. É esperado que o usuário
+ * informe valores válidos para entidades simples como especificadas em pessoa.h,
+ * usuário.h, requisitos.h, administrador.h, relacionamento.h e transacao.h.
  *
- * REstrições da calsse:
- *  ???
+ * Restrições da classe:
+ *  Vértices e arestas são operados como classes customizadas identificadas por tipos
+ * especificados em pessoa.h e relacionamento.h, portanto grafo não trabalho com
+ * tipos quaisquer.
  *
  * ********************************************************************************/
 class Rede
@@ -66,7 +71,6 @@ class Rede
       unsigned int idPessoa;
       unsigned int idTransacao;
       unsigned int idColaboracao;
-
 
       /** ******************************************************************************
       *  Funcao: *getRelacionamentoAdjacenteNaoVisitado
@@ -387,18 +391,151 @@ class Rede
       ** *******************************************************************************/
       bool menorCaminho( unsigned int idOrigem, unsigned int idDestino );
 
-
+      /** ******************************************************************************
+      *  Funcao: iniciarTransacao
+      *
+      *  Descricao da funcao:
+      *      Inicia transacao entre usuários e atualiza lista de transações da rede.
+      *
+      * @param *solicitante          - Ponteiro para usuario que requisitou um servico.
+      * @param *fornecedor           - Ponteiro para usuario que ira fornecer servico.
+      * @param inteSoliciatante      - Especificacao em string do servico solicitado por
+      * solicitante.
+      * @param inteFornecedor        - Especificacao em string do servico ofertado por
+      * fornecedor.
+      *
+      ** *******************************************************************************/
       void iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor);
 
+      /** ******************************************************************************
+      *  Funcao: iniciarTransacao
+      *
+      *  Descricao da funcao:
+      *      Inicia transacao entre usuários e atualiza lista de transações da rede.
+      *
+      * @param *solicitante          - Ponteiro para usuario que requisitou um servico.
+      * @param *fornecedor           - Ponteiro para usuario que ira fornecer servico.
+      * @param inteSoliciatante      - Especificacao em string do servico solicitado por
+      * solicitante.
+      * @param inteFornecedor        - Especificacao em string do servico ofertado por
+      * fornecedor.
+      * @param finalizada            - Valor boleano que indica se transação foi finalizada.
+      *
+      ** *******************************************************************************/
       void inserirTransacao(unsigned int id, Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor, bool finalizada);
 
+      /** ******************************************************************************
+      * Funcao: iniciarTransacao
+      *
+      * Descricao da funcao:
+      *     Inicia transacao entre usuários e atualiza lista de transações da rede.
+      *
+      * Assertiva de entrada:
+      *     string informada possui formato válido para armazenagem em .json.
+      *
+      * Assertiva de ssaida:
+      *     Arquivo .json gerado com rede salva.
+      *
+      * @param arquivo          - string com todos os parametros da rede corretamente
+      * formatados, tipos básicos da rede e estruturas.
+      *
+      ** *******************************************************************************/
       void guardarRedeJson(string arquivo);
 
+      /** ******************************************************************************
+      * Funcao: redeJson
+      *
+      * Descricao da funcao:
+      *     Constroi string de todas as variaveis e tipos básicos da rede para formato
+      * json.
+      *
+      * Assertiva de saida:
+      *     String contendo rede em formato json.
+      *
+      * @return string      - Rede convertida para formato json em string.
+      *
+      ** *******************************************************************************/
       string redeJson();
 
+      /** ******************************************************************************
+      * Funcao: criarRedeJson
+      *
+      * Descricao da funcao:
+      *     Faz a leitura de um arquivo em formato json e popula o objeto rede no qual a
+      * funcao foi chamada.
+      *
+      * Assertiva de entrada:
+      *     O arquivo deve existir e estar corretamente formatado como json, construido a
+      * partir da funcao guardarRedeJson.
+      *
+      * Assertiva de saida:
+      *     Objeto do tipo rede populado com todos os valores da rede salva em arquivo json.
+      *
+      * @param  arquivo   - Nome do arquivo .json que será utilizado para leitura.
+      * @return bool      - True : Caso arquivo exista e esteja corretamente formatado.
+      *                   - False : Caso arquivo não exista ou esteja incorretamente formatado.
+      *
+      ** *******************************************************************************/
       bool criarRedeJson(string arquivo);
+
+      /** ******************************************************************************
+      * Funcao: inserirPessoasJson
+      *
+      * Descricao da funcao:
+      *     Insere pessoas lidas de um arquivo json no objeto rede. Função é auxiliar a
+      * função @sa criarRedeJson
+      *
+      * Assertiva de entrada:
+      *     Formato da pessoa lida em arquivo deve estar corretamente estruturado.
+      *
+      * Assertiva de saida:
+      *     Pessoa inserida corretamete na rede com todos valores corretos.
+      *
+      * @param  js        - tipo básico json no qual será carregado o arquivo de leitura.
+      * @return bool      - True : Caso arquivo esteja corretamente formatado.
+      *                   - False : Caso arquivo não esteja corretamente formatado.
+      *
+      ** *******************************************************************************/
       bool inserirPessoasJson(json js);
+
+      /** ******************************************************************************
+      * Funcao: inserirTransacaoJson
+      *
+      * Descricao da funcao:
+      *     Insere transacoes lidas de um arquivo json no objeto rede. Função é auxiliar a
+      * função @sa criarRedeJson
+      *
+      * Assertiva de entrada:
+      *     Formato da transacao lida em arquivo deve estar corretamente estruturado.
+      *
+      * Assertiva de saida:
+      *     Transacao inserida corretamete na rede com todos valores corretos.
+      *
+      * @param  js        - tipo básico json no qual será carregado o arquivo de leitura.
+      * @return bool      - True : Caso arquivo esteja corretamente formatado.
+      *                   - False : Caso arquivo não esteja corretamente formatado.
+      *
+      ** *******************************************************************************/
       bool inserirTransacaoJson(json js);
+
+      /** ******************************************************************************
+      * Funcao: inserirRelacionamentoJson
+      *
+      * Descricao da funcao:
+      *     Insere relacionamentos lidos de um arquivo json no objeto rede. Função é auxiliar a
+      * função @sa criarRedeJson
+      *
+      * Assertiva de entrada:
+      *     Formato do relacionamento lido em arquivo deve estar corretamente estruturado.
+      *
+      * Assertiva de saida:
+      *     Relacionamento inserido corretamete na rede com todos valores corretos.
+      *
+      * @param  js        - tipo básico json no qual será carregado o arquivo de leitura.
+      * @return bool      - True : Caso arquivo esteja corretamente formatado.
+      *                   - False : Caso arquivo não esteja corretamente formatado.
+      *
+      ** *******************************************************************************/
       bool inserirRelacionamentoJson(json js);
 };
 

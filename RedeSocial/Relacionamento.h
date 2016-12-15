@@ -38,13 +38,13 @@
  *  compartilhada. Representa o relacionamento entre pessoas da rede.
  *
  * Requisitos assegurados pela classe:
- *  ?????
+ *  Funcionalidade de aresta de um grafo, contendo direcionamento, origem para destino.
  *
  * Hipóteses assumidas pela classe:
- *  ????
+ *  Classe sempre que instanciada possui uma origem e um destino especificados.
  *
  * REstrições da calsse:
- *  ???
+ *  Possui direcionamento unico, e armazena como valores apenas objetos do tipo Pessoa.
  *
  * ********************************************************************************/
 class Relacionamento
@@ -82,29 +82,41 @@ class Relacionamento
       ** *******************************************************************************/
 	  ~Relacionamento();
 	  
-      /** ******************************************************************************
-      *  Funcao: *getOrigem
-      *
-      *  Descricao da funcao:
-      *      Obtem a pessoa de origem do relacionamento.
-      *
-      * @return   origem - Ponteiro que aponta para a pessoa de origem do relacionamento.
-      *
-      ** *******************************************************************************/
+        /** ******************************************************************************
+        *  Funcao: *getOrigem
+        *
+        *  Descricao da funcao:
+        *      Obtem a pessoa de origem do relacionamento.
+        *
+        * @return   origem - Ponteiro que aponta para a pessoa de origem do relacionamento.
+        *
+        ** *******************************************************************************/
 	  const Pessoa *getOrigem() const;
 
-      /** ******************************************************************************
-      *  Funcao: *getDestino
-      *
-      *  Descricao da funcao:
-      *      Obtem a pessoa de destino do relacionamento.
-      *
-      * @return   destino - Ponteiro que aponta para a pessoa de origem do relacionamento.
-      *
-      ** *******************************************************************************/
-	  const Pessoa *getDestino() const;
+        /** ******************************************************************************
+        *  Funcao: *getDestino
+        *
+        *  Descricao da funcao:
+        *      Obtem a pessoa de destino do relacionamento.
+        *
+        * @return   destino - Ponteiro que aponta para a pessoa de origem do relacionamento.
+        *
+        ** *******************************************************************************/
+        const Pessoa *getDestino() const;
 
-          string relacionamentoJson() const;
+        /** ******************************************************************************
+        *  Funcao: relacionamentoJson
+        *
+        *  Descricao da funcao:
+        *      Transforma objeto relacionamento em string com formato json para ser salvo.
+        *
+        *  Assertiva de saída:
+        *      String com tipos básicos e estruturas do objeto relacionamento.
+        *
+        * @return   string - Cadeia de caracteres com valores da classe em formato json.
+        *
+        ** *******************************************************************************/
+        string relacionamentoJson() const;
 };
 
 #endif
