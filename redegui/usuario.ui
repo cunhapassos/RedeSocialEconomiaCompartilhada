@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Usuario</class>
+ <widget class="QMainWindow" name="Usuario">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>256</width>
+      <height>481</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>200</y>
+      <width>241</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Colocar visualização do grafo aqui</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPerfil">
+    <property name="title">
+     <string>Perfil</string>
+    </property>
+    <addaction name="actionCriar_Perfil"/>
+    <addaction name="actionEditar_Perfil"/>
+    <addaction name="actionExcluir_Perfil"/>
+   </widget>
+   <widget class="QMenu" name="menuIntera_es">
+    <property name="title">
+     <string>Interações</string>
+    </property>
+    <addaction name="actionInciciar_Amizade"/>
+   </widget>
+   <addaction name="menuPerfil"/>
+   <addaction name="menuIntera_es"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCriar_Perfil">
+   <property name="text">
+    <string>Criar Perfil</string>
+   </property>
+  </action>
+  <action name="actionEditar_Perfil">
+   <property name="text">
+    <string>Editar Perfil</string>
+   </property>
+  </action>
+  <action name="actionExcluir_Perfil">
+   <property name="text">
+    <string>Excluir Perfil</string>
+   </property>
+  </action>
+  <action name="actionIniciar_Amizade">
+   <property name="text">
+    <string>Iniciar Amizade</string>
+   </property>
+  </action>
+  <action name="actionInciciar_Amizade">
+   <property name="text">
+    <string>Inciciar Amizade</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

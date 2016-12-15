@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         //cout << it.key() << " : " << it.value() << "\n\n";
     }
 
-
+\
     Rede *rede = new Rede("Economia");
 
     rede->criarRedeJson("rede.json");
