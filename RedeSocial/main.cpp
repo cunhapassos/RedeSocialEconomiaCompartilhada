@@ -1,16 +1,32 @@
-#include <QCoreApplication>
+
 #include <stdio.h>
 #include <iostream>
+
+#include <QApplication>
 
 #include "rede.h"
 #include "usuario.h"
 #include "gtest/gtest.h"
 #include "json.cpp"
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
 
+    Rede *rede = new Rede("Economia");
+    rede->criarRedeJson("rede.json");
+    cout << rede->procuraPessoaNome("Thais") << "\n";
 
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.addRede(rede);
+    w.show();
+
+     a.exec();
+    cout << rede->procuraPessoaNome("Leandro") << "\n";
+    cout << rede->procuraPessoaNome("Ze") << "\n";
+    return 0;
+ /*
     cout << "olá mundo!" << endl;
  //     TESTES JSON
  //====================================================================
@@ -53,7 +69,7 @@ int main(int argc, char *argv[])
         rede->imprimirCaminhoRelacionamentos();
         cout << "Disantancia de 1 a 3: " << rede->caminhoRelacionamentos.size() << "\n"; // verifica a distancia de 1 a 3;
     }
-    //rede->inserirPessoasJson(j);
+    //rede->inserirPessoasJson(j); */
  //====================================================================
 
 /*

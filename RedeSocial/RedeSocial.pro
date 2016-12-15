@@ -1,7 +1,8 @@
-QT += core
-QT -= gui
+QT += core gui
 
-CONFIG += c++11
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+#CONFIG += c++11
 
 TARGET = RedeSocial
 CONFIG += console
@@ -16,8 +17,11 @@ SOURCES += main.cpp \
     rede.cpp \
     relacionamento.cpp \
     transacao.cpp \
+    json.cpp \
+    administrador.cpp \
+    usuarioperfil.cpp \
     usuario.cpp \
-    json.cpp
+    mainwindow.cpp
 
 HEADERS += \
     avaliacao.h \
@@ -25,7 +29,15 @@ HEADERS += \
     rede.h \
     relacionamento.h \
     transacao.h \
-    usuario.h
+    administrador.h \
+    usuarioperfil.h \
+    usuario.h \
+    mainwindow.h
+
+FORMS    += mainwindow.ui \
+    usuario.ui \
+    administrador.ui \
+    usuarioperfil.ui
 
 unix: LIBS += -L$$PWD/./ -lgtest
 
@@ -37,3 +49,5 @@ unix: PRE_TARGETDEPS += $$PWD/./libgtest.a
 DISTFILES += \
     JSON.json \
     rede.json
+
+

@@ -1,24 +1,22 @@
 #include "usuario.h"
+#include "ui_usuario.h"
 
-Usuario::Usuario(Rede *_rede)
+Usuario::Usuario(QWidget *parent, Rede *_rede) :
+    QMainWindow(parent),
+    ui(new Ui::Usuario)
 {
+    ui->setupUi(this);
     rede = _rede;
 }
-void Usuario::criarPessoa(string nome, unsigned int idade, string genero, unsigned int cep, string escolaridade)
+
+Usuario::~Usuario()
 {
-    rede->inserePessoa(nome, idade, genero, cep, escolaridade);
+    delete ui;
 }
 
-void Usuario::inserirRelacionamento(string pessA, string pessB)
+void Usuario::on_actionCriar_Perfil_triggered()
 {
-    /**
-     * Para que exista amizade entre duas pessoas A e B, deve-se
-     * exixtir uma aresta de A para B e uma de B para A
-     **/
-    rede->iniciarRelacionamentoPorNome(pessA, pessB);
-    rede->iniciarRelacionamentoPorNome(pessB, pessA);
+    uPerfil = new UsuarioPerfil(this, rede);
+    uPerfil->show();
 }
 
-void Usuario::excluirPessoa(string nome){
-    rede->removePessoaPorNome(nome);
-}

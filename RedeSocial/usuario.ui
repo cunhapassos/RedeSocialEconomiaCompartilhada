@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Usuario</class>
+ <widget class="QMainWindow" name="Usuario">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>90</y>
+      <width>291</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Clique no menu Perfil-&gt; Criar Perfil</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPerfil">
+    <property name="title">
+     <string>Perfil</string>
+    </property>
+    <addaction name="actionCriar_Perfil"/>
+    <addaction name="actionEditar_Perfil"/>
+    <addaction name="actionExcluir_Perfil"/>
+   </widget>
+   <addaction name="menuPerfil"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCriar_Perfil">
+   <property name="text">
+    <string>Criar Perfil</string>
+   </property>
+  </action>
+  <action name="actionEditar_Perfil">
+   <property name="text">
+    <string>Editar Perfil</string>
+   </property>
+  </action>
+  <action name="actionExcluir_Perfil">
+   <property name="text">
+    <string>Excluir Perfil</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
