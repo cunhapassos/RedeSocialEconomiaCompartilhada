@@ -8,7 +8,7 @@ AvaliacaoJanela::AvaliacaoJanela(QWidget *parent, Rede *_rede, Pessoa *_pes, Tra
     ui->setupUi(this);
     rede = _rede;
     pes = _pes;
-    tr = _tr;
+    tr1 = _tr;
 }
 
 AvaliacaoJanela::~AvaliacaoJanela()
@@ -18,6 +18,6 @@ AvaliacaoJanela::~AvaliacaoJanela()
 
 void AvaliacaoJanela::on_pushButton_clicked()
 {
-    pes->inserirAvaliacao(ui->spinBox->value(), tr);
+    pes->inserirAvaliacao(ui->spinBox->value(), tr1);
     hide();
 }

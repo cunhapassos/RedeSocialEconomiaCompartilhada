@@ -10,37 +10,40 @@ Transacao::Transacao(unsigned int _id, int _consumidor, int _fornecedor, string 
     interesseSolicitante = inteConsumidor;
     finalizada = false;
 }
+//---------------------------------------------------------------------------
 unsigned int Transacao::getId() const
 {
     return id;
 }
-
+//---------------------------------------------------------------------------
 int Transacao::getIdFornecedor() const {
     return IdFornecedor;
 }
-
+//---------------------------------------------------------------------------
 int Transacao::getIdConsumidor() const {
     return IdConsumidor;
 }
-
+//---------------------------------------------------------------------------
 void Transacao::setFim(bool fim)
 {
     finalizada = fim;
 }
-bool  Transacao::getFim()
+//---------------------------------------------------------------------------
+bool Transacao::getFim()
 {
     return finalizada;
 }
+//---------------------------------------------------------------------------
 string Transacao::getInteresseFornecedor() const
 {
     return intersseFornecedor;
 }
-
+//---------------------------------------------------------------------------
 string Transacao::getInteresseConsumidor() const
 {
     return interesseSolicitante;
 }
-
+//---------------------------------------------------------------------------
 string Transacao::transacaoJson() const
 {
     string json;
@@ -48,16 +51,19 @@ string Transacao::transacaoJson() const
     stringstream idTransacaoString;
     stringstream idFornecedorString;
     stringstream idConsumidorString;
+    stringstream finalizadaString;
 
     idTransacaoString << getId();
     idFornecedorString << getIdFornecedor();
     idConsumidorString << getIdConsumidor();
+    finalizadaString << finalizada;
 
      json = "{\"id\":" + idTransacaoString.str() + "," +
              "\"IdFornecedor\":" + idFornecedorString.str() + "," +
              "\"IdConsumidor\":" + idConsumidorString.str() + "," +
              "\"intersseFornecedor\":\"" + getInteresseFornecedor() + "\"," +
-             "\"interesseSolicitante\":\"" + getInteresseConsumidor() + "\"}";
+             "\"interesseSolicitante\":\"" + getInteresseConsumidor() + "\"," +
+             "\"finalizada\":" + finalizadaString.str() + "}";
      return json;
 }
 

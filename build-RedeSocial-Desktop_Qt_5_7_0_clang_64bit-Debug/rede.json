@@ -1,0 +1,111 @@
+{
+    "ListaPessoas": [
+        {
+            "avaliacoes": [
+                {
+                    "IdTransacao": 1,
+                    "nota": 5
+                }
+            ],
+            "cep": 71065904,
+            "escolaridade": "Superior",
+            "genero": "M",
+            "id": 1,
+            "idade": 32,
+            "interesses": [
+                "Comprar Carro",
+                "Comprar Carro",
+                "Comprar Carro"
+            ],
+            "nome": "Paulo",
+            "transacoes": []
+        },
+        {
+            "avaliacoes": [],
+            "cep": 71065905,
+            "escolaridade": "Primeiro Grau incompleto",
+            "genero": "M",
+            "id": 2,
+            "idade": 20,
+            "interesses": [
+                "Vender Carro",
+                "Vender Carro",
+                "Vender Carro"
+            ],
+            "nome": "Pedro",
+            "transacoes": []
+        },
+        {
+            "avaliacoes": [],
+            "cep": 71065906,
+            "escolaridade": "Medio completo",
+            "genero": "M",
+            "id": 3,
+            "idade": 25,
+            "interesses": [
+                "Dar Carona",
+                "Dar Carona",
+                "Dar Carona"
+            ],
+            "nome": "Renan",
+            "transacoes": []
+        },
+        {
+            "avaliacoes": [],
+            "cep": 71065907,
+            "escolaridade": "Medio completo",
+            "genero": "F",
+            "id": 4,
+            "idade": 22,
+            "interesses": [
+                "Pegar Carona",
+                "Pegar Carona",
+                "Pegar Carona"
+            ],
+            "nome": "Camila",
+            "transacoes": []
+        },
+        {
+            "avaliacoes": [],
+            "cep": 71065908,
+            "escolaridade": "Superior completo",
+            "genero": "F",
+            "id": 5,
+            "idade": 27,
+            "interesses": [
+                "Alugar Casa",
+                "Alugar Casa",
+                "Alugar Casa"
+            ],
+            "nome": "Thais",
+            "transacoes": []
+        }
+    ],
+    "ListaRelacionamentos": [
+        {
+            "idDestino": 2,
+            "idOrigem": 1
+        },
+        {
+            "idDestino": 3,
+            "idOrigem": 2
+        },
+        {
+            "idDestino": 4,
+            "idOrigem": 3
+        },
+        {
+            "idDestino": 2,
+            "idOrigem": 5
+        }
+    ],
+    "transacoes": [
+        {
+            "IdConsumidor": 1,
+            "IdFornecedor": 2,
+            "id": 1,
+            "interesseSolicitante": "Comprar Carro",
+            "intersseFornecedor": "Vender Carro"
+        }
+    ]
+}

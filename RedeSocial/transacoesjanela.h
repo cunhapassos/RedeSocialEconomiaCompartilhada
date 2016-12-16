@@ -28,6 +28,8 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void on_pushButtonConcluir_clicked();
+
 private:
     Ui::TransacoesJanela *ui;
     Rede *rede;

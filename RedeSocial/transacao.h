@@ -21,7 +21,7 @@
 #define TRANSACAO_H
 
 #include <string>
-
+#include <iostream>
 using namespace std;
 
 /** ********************************************************************************
@@ -48,14 +48,14 @@ class Transacao
 {
 protected:
     unsigned int id;
-    bool finalizada;
+
     int IdFornecedor;
     int IdConsumidor;
     string intersseFornecedor;
     string interesseSolicitante;
 
 public:
-
+    bool finalizada;
     /** ******************************************************************************
     *
     *  Descricao da funcao:

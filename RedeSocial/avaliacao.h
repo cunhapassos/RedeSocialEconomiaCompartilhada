@@ -21,6 +21,7 @@
 #define AVALIACAO_H
 
 #include "transacao.h"
+#include <sstream>
 
 /** ********************************************************************************
  * Classe: Avaliacao
@@ -81,7 +82,7 @@ public:
     * @return  unsigned int - retorna o valor da nota atribuida.
     *
     ** *******************************************************************************/
-    unsigned int getNota();
+    int getNota();
 
     /** ******************************************************************************
     *  Funcao: setNota
@@ -104,6 +105,21 @@ public:
     *
     ** *******************************************************************************/
     Transacao* getTransacao();
+
+    /** ******************************************************************************
+    * Funcao: avaliacaoJson
+    *
+    * Descricao da funcao:
+    *    Transforma os tipos básicos e estruturas do objeto avaliacao em uma string
+    * com a formatação correta para salvar em arquivo do tipo .json.
+    *
+    * Assertiva de saida:
+    *    Objeto transacao convertido corretamente para ser salvo em .json.
+    *
+    * @return string       - Contém objeto convertido para string em formato .json.
+    *
+    ** *******************************************************************************/
+    string avaliacaoJson();
 };
 
 #endif // AVALIACAO_H

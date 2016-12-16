@@ -460,6 +460,17 @@ class Rede
       void inserirTransacao(unsigned int id, Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor, bool finalizada);
 
       /** ******************************************************************************
+      *  Funcao: retornaTransação
+      *
+      *  Descricao da funcao:
+      *      Dado um identificador retorna a transação correspondente.
+      *
+      * @param id         - identificador da transação a ser retornada.
+      *
+      ** *******************************************************************************/
+      Transacao* retornaTransação(int id);
+
+      /** ******************************************************************************
       * Funcao: iniciarTransacao
       *
       * Descricao da funcao:

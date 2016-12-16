@@ -19,7 +19,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
@@ -34,7 +33,7 @@ public:
     QGroupBox *groupBox;
     QPushButton *pushButton_2;
     QListWidget *listWidgetInteresses;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_2;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
@@ -47,39 +46,39 @@ public:
     QGroupBox *groupBox_3;
     QListWidget *listWidgetTransacoesFinalizadas;
     QPushButton *pushButton_5;
-    QMenuBar *menubar;
+    QPushButton *pushButtonConcluir;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *TransacoesJanela)
     {
         if (TransacoesJanela->objectName().isEmpty())
             TransacoesJanela->setObjectName(QStringLiteral("TransacoesJanela"));
-        TransacoesJanela->resize(1208, 600);
+        TransacoesJanela->resize(1038, 600);
         centralwidget = new QWidget(TransacoesJanela);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(30, 30, 311, 511));
+        groupBox->setGeometry(QRect(30, 30, 311, 471));
         pushButton_2 = new QPushButton(groupBox);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(80, 420, 141, 32));
         listWidgetInteresses = new QListWidget(groupBox);
         listWidgetInteresses->setObjectName(QStringLiteral("listWidgetInteresses"));
         listWidgetInteresses->setGeometry(QRect(15, 91, 281, 321));
-        widget = new QWidget(groupBox);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 40, 288, 38));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(groupBox);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 40, 288, 38));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout->addWidget(label);
 
-        spinBox = new QSpinBox(widget);
+        spinBox = new QSpinBox(layoutWidget);
         spinBox->setObjectName(QStringLiteral("spinBox"));
 
         horizontalLayout->addWidget(spinBox);
@@ -87,14 +86,14 @@ public:
 
         horizontalLayout_2->addLayout(horizontalLayout);
 
-        pushButton = new QPushButton(widget);
+        pushButton = new QPushButton(layoutWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
         horizontalLayout_2->addWidget(pushButton);
 
         groupBox_2 = new QGroupBox(centralwidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(360, 30, 311, 511));
+        groupBox_2->setGeometry(QRect(360, 30, 311, 461));
         pushButton_3 = new QPushButton(groupBox_2);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(150, 420, 151, 32));
@@ -106,18 +105,17 @@ public:
         pushButton_4->setGeometry(QRect(10, 420, 141, 32));
         groupBox_3 = new QGroupBox(centralwidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(690, 30, 321, 511));
+        groupBox_3->setGeometry(QRect(690, 30, 321, 461));
         listWidgetTransacoesFinalizadas = new QListWidget(groupBox_3);
         listWidgetTransacoesFinalizadas->setObjectName(QStringLiteral("listWidgetTransacoesFinalizadas"));
         listWidgetTransacoesFinalizadas->setGeometry(QRect(10, 90, 301, 321));
         pushButton_5 = new QPushButton(groupBox_3);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
         pushButton_5->setGeometry(QRect(70, 420, 181, 32));
+        pushButtonConcluir = new QPushButton(centralwidget);
+        pushButtonConcluir->setObjectName(QStringLiteral("pushButtonConcluir"));
+        pushButtonConcluir->setGeometry(QRect(900, 510, 113, 32));
         TransacoesJanela->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(TransacoesJanela);
-        menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1208, 22));
-        TransacoesJanela->setMenuBar(menubar);
         statusbar = new QStatusBar(TransacoesJanela);
         statusbar->setObjectName(QStringLiteral("statusbar"));
         TransacoesJanela->setStatusBar(statusbar);
@@ -139,6 +137,7 @@ public:
         pushButton_4->setText(QApplication::translate("TransacoesJanela", "Atualizar", 0));
         groupBox_3->setTitle(QApplication::translate("TransacoesJanela", "Transa\303\247\303\265es Finalizadas:", 0));
         pushButton_5->setText(QApplication::translate("TransacoesJanela", "Atualizar", 0));
+        pushButtonConcluir->setText(QApplication::translate("TransacoesJanela", "Concluir", 0));
     } // retranslateUi
 
 };

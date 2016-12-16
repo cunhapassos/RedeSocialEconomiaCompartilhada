@@ -22,7 +22,7 @@ private:
     Ui::AvaliacaoJanela *ui;
     Rede *rede;
     Pessoa *pes;
-    Transacao *tr;
+    Transacao *tr1;
 };
 
 #endif // AVALIACAOJANELA_H

@@ -60,12 +60,14 @@ SOURCES       = ../RedeSocial/main.cpp \
 		../RedeSocial/mainwindow.cpp \
 		../RedeSocial/criarperfil.cpp \
 		../RedeSocial/editarperfil.cpp \
-		../RedeSocial/transacoesjanela.cpp moc_administrador.cpp \
+		../RedeSocial/transacoesjanela.cpp \
+		../RedeSocial/avaliacaojanela.cpp moc_administrador.cpp \
 		moc_usuario.cpp \
 		moc_mainwindow.cpp \
 		moc_criarperfil.cpp \
 		moc_editarperfil.cpp \
-		moc_transacoesjanela.cpp
+		moc_transacoesjanela.cpp \
+		moc_avaliacaojanela.cpp
 OBJECTS       = main.o \
 		testes.o \
 		avaliacao.o \
@@ -79,12 +81,14 @@ OBJECTS       = main.o \
 		criarperfil.o \
 		editarperfil.o \
 		transacoesjanela.o \
+		avaliacaojanela.o \
 		moc_administrador.o \
 		moc_usuario.o \
 		moc_mainwindow.o \
 		moc_criarperfil.o \
 		moc_editarperfil.o \
-		moc_transacoesjanela.o
+		moc_transacoesjanela.o \
+		moc_avaliacaojanela.o
 DIST          = ../RedeSocial/JSON.json \
 		../RedeSocial/rede.json \
 		/Applications/Qt/5.7/clang_64/mkspecs/features/spec_pre.prf \
@@ -254,7 +258,8 @@ DIST          = ../RedeSocial/JSON.json \
 		../RedeSocial/mainwindow.h \
 		../RedeSocial/criarperfil.h \
 		../RedeSocial/editarperfil.h \
-		../RedeSocial/transacoesjanela.h ../RedeSocial/main.cpp \
+		../RedeSocial/transacoesjanela.h \
+		../RedeSocial/avaliacaojanela.h ../RedeSocial/main.cpp \
 		../RedeSocial/testes.cpp \
 		../RedeSocial/avaliacao.cpp \
 		../RedeSocial/pessoa.cpp \
@@ -266,7 +271,8 @@ DIST          = ../RedeSocial/JSON.json \
 		../RedeSocial/mainwindow.cpp \
 		../RedeSocial/criarperfil.cpp \
 		../RedeSocial/editarperfil.cpp \
-		../RedeSocial/transacoesjanela.cpp
+		../RedeSocial/transacoesjanela.cpp \
+		../RedeSocial/avaliacaojanela.cpp
 QMAKE_TARGET  = RedeSocial
 DESTDIR       = 
 TARGET        = RedeSocial
@@ -275,7 +281,7 @@ TARGET        = RedeSocial
 first: all
 ####### Build rules
 
-$(TARGET): /Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial/./libgtest.a ui_mainwindow.h ui_usuario.h ui_administrador.h ui_criarperfil.h ui_editarperfil.h ui_transacoesjanela.h $(OBJECTS)  
+$(TARGET): /Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial/./libgtest.a ui_mainwindow.h ui_usuario.h ui_administrador.h ui_criarperfil.h ui_editarperfil.h ui_transacoesjanela.h ui_avaliacaojanela.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 	mkdir -p /Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/build-RedeSocial-Desktop_Qt_5_7_0_clang_64bit-Profile/RedeSocial.dSYM/Contents/Resources/DWARF && dsymutil RedeSocial --flat -o RedeSocial.dSYM/Contents/Resources/DWARF/RedeSocial && strip -S RedeSocial
 
@@ -618,9 +624,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../RedeSocial/avaliacao.h ../RedeSocial/pessoa.h ../RedeSocial/rede.h ../RedeSocial/relacionamento.h ../RedeSocial/transacao.h ../RedeSocial/administrador.h ../RedeSocial/usuario.h ../RedeSocial/mainwindow.h ../RedeSocial/criarperfil.h ../RedeSocial/editarperfil.h ../RedeSocial/transacoesjanela.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../RedeSocial/main.cpp ../RedeSocial/testes.cpp ../RedeSocial/avaliacao.cpp ../RedeSocial/pessoa.cpp ../RedeSocial/rede.cpp ../RedeSocial/relacionamento.cpp ../RedeSocial/transacao.cpp ../RedeSocial/administrador.cpp ../RedeSocial/usuario.cpp ../RedeSocial/mainwindow.cpp ../RedeSocial/criarperfil.cpp ../RedeSocial/editarperfil.cpp ../RedeSocial/transacoesjanela.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../RedeSocial/mainwindow.ui ../RedeSocial/usuario.ui ../RedeSocial/administrador.ui ../RedeSocial/criarperfil.ui ../RedeSocial/editarperfil.ui ../RedeSocial/transacoesjanela.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../RedeSocial/avaliacao.h ../RedeSocial/pessoa.h ../RedeSocial/rede.h ../RedeSocial/relacionamento.h ../RedeSocial/transacao.h ../RedeSocial/administrador.h ../RedeSocial/usuario.h ../RedeSocial/mainwindow.h ../RedeSocial/criarperfil.h ../RedeSocial/editarperfil.h ../RedeSocial/transacoesjanela.h ../RedeSocial/avaliacaojanela.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../RedeSocial/main.cpp ../RedeSocial/testes.cpp ../RedeSocial/avaliacao.cpp ../RedeSocial/pessoa.cpp ../RedeSocial/rede.cpp ../RedeSocial/relacionamento.cpp ../RedeSocial/transacao.cpp ../RedeSocial/administrador.cpp ../RedeSocial/usuario.cpp ../RedeSocial/mainwindow.cpp ../RedeSocial/criarperfil.cpp ../RedeSocial/editarperfil.cpp ../RedeSocial/transacoesjanela.cpp ../RedeSocial/avaliacaojanela.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../RedeSocial/mainwindow.ui ../RedeSocial/usuario.ui ../RedeSocial/administrador.ui ../RedeSocial/criarperfil.ui ../RedeSocial/editarperfil.ui ../RedeSocial/transacoesjanela.ui ../RedeSocial/avaliacaojanela.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -646,9 +652,9 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_administrador.cpp moc_usuario.cpp moc_mainwindow.cpp moc_criarperfil.cpp moc_editarperfil.cpp moc_transacoesjanela.cpp
+compiler_moc_header_make_all: moc_administrador.cpp moc_usuario.cpp moc_mainwindow.cpp moc_criarperfil.cpp moc_editarperfil.cpp moc_transacoesjanela.cpp moc_avaliacaojanela.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_administrador.cpp moc_usuario.cpp moc_mainwindow.cpp moc_criarperfil.cpp moc_editarperfil.cpp moc_transacoesjanela.cpp
+	-$(DEL_FILE) moc_administrador.cpp moc_usuario.cpp moc_mainwindow.cpp moc_criarperfil.cpp moc_editarperfil.cpp moc_transacoesjanela.cpp moc_avaliacaojanela.cpp
 moc_administrador.cpp: /Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		../RedeSocial/administrador.h \
@@ -675,6 +681,7 @@ moc_usuario.cpp: /Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/Q
 		../RedeSocial/transacoesjanela.h \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/QStandardItemModel \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../RedeSocial/avaliacaojanela.h \
 		../RedeSocial/usuario.h \
 		/Applications/Qt/5.7/clang_64/bin/moc
 	/Applications/Qt/5.7/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Applications/Qt/5.7/clang_64/mkspecs/macx-clang -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial/include -I/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/usr/local/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/usr/include -I'/System/Library/Frameworks (framework directory)' -I'/Library/Frameworks (framework directory)' -F/Applications/Qt/5.7/clang_64/lib ../RedeSocial/usuario.h -o moc_usuario.cpp
@@ -702,6 +709,7 @@ moc_mainwindow.cpp: /Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Header
 		../RedeSocial/transacoesjanela.h \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/QStandardItemModel \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../RedeSocial/avaliacaojanela.h \
 		../RedeSocial/mainwindow.h \
 		/Applications/Qt/5.7/clang_64/bin/moc
 	/Applications/Qt/5.7/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Applications/Qt/5.7/clang_64/mkspecs/macx-clang -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial/include -I/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/usr/local/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/usr/include -I'/System/Library/Frameworks (framework directory)' -I'/Library/Frameworks (framework directory)' -F/Applications/Qt/5.7/clang_64/lib ../RedeSocial/mainwindow.h -o moc_mainwindow.cpp
@@ -727,6 +735,7 @@ moc_criarperfil.cpp: /Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Heade
 		../RedeSocial/transacoesjanela.h \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/QStandardItemModel \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../RedeSocial/avaliacaojanela.h \
 		../RedeSocial/criarperfil.h \
 		/Applications/Qt/5.7/clang_64/bin/moc
 	/Applications/Qt/5.7/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Applications/Qt/5.7/clang_64/mkspecs/macx-clang -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial/include -I/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/usr/local/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/usr/include -I'/System/Library/Frameworks (framework directory)' -I'/Library/Frameworks (framework directory)' -F/Applications/Qt/5.7/clang_64/lib ../RedeSocial/criarperfil.h -o moc_criarperfil.cpp
@@ -759,15 +768,32 @@ moc_transacoesjanela.cpp: /Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/
 		../RedeSocial/transacao.h \
 		../RedeSocial/avaliacao.h \
 		../RedeSocial/relacionamento.h \
+		../RedeSocial/avaliacaojanela.h \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RedeSocial/Rede.h \
 		../RedeSocial/transacoesjanela.h \
 		/Applications/Qt/5.7/clang_64/bin/moc
 	/Applications/Qt/5.7/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Applications/Qt/5.7/clang_64/mkspecs/macx-clang -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial/include -I/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/usr/local/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/usr/include -I'/System/Library/Frameworks (framework directory)' -I'/Library/Frameworks (framework directory)' -F/Applications/Qt/5.7/clang_64/lib ../RedeSocial/transacoesjanela.h -o moc_transacoesjanela.cpp
 
+moc_avaliacaojanela.cpp: /Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RedeSocial/Rede.h \
+		../RedeSocial/pessoa.h \
+		../RedeSocial/json.cpp \
+		../RedeSocial/include/json.hpp \
+		../RedeSocial/transacao.h \
+		../RedeSocial/avaliacao.h \
+		../RedeSocial/relacionamento.h \
+		../RedeSocial/avaliacaojanela.h \
+		/Applications/Qt/5.7/clang_64/bin/moc
+	/Applications/Qt/5.7/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Applications/Qt/5.7/clang_64/mkspecs/macx-clang -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial -I/Volumes/MAC-PASSOS/GITHUB/RedeSocialEconomiaCompartilhada/RedeSocial/include -I/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/usr/local/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/usr/include -I'/System/Library/Frameworks (framework directory)' -I'/Library/Frameworks (framework directory)' -F/Applications/Qt/5.7/clang_64/lib ../RedeSocial/avaliacaojanela.h -o moc_avaliacaojanela.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_usuario.h ui_administrador.h ui_criarperfil.h ui_editarperfil.h ui_transacoesjanela.h
+compiler_uic_make_all: ui_mainwindow.h ui_usuario.h ui_administrador.h ui_criarperfil.h ui_editarperfil.h ui_transacoesjanela.h ui_avaliacaojanela.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_usuario.h ui_administrador.h ui_criarperfil.h ui_editarperfil.h ui_transacoesjanela.h
+	-$(DEL_FILE) ui_mainwindow.h ui_usuario.h ui_administrador.h ui_criarperfil.h ui_editarperfil.h ui_transacoesjanela.h ui_avaliacaojanela.h
 ui_mainwindow.h: ../RedeSocial/mainwindow.ui \
 		/Applications/Qt/5.7/clang_64/bin/uic
 	/Applications/Qt/5.7/clang_64/bin/uic ../RedeSocial/mainwindow.ui -o ui_mainwindow.h
@@ -791,6 +817,10 @@ ui_editarperfil.h: ../RedeSocial/editarperfil.ui \
 ui_transacoesjanela.h: ../RedeSocial/transacoesjanela.ui \
 		/Applications/Qt/5.7/clang_64/bin/uic
 	/Applications/Qt/5.7/clang_64/bin/uic ../RedeSocial/transacoesjanela.ui -o ui_transacoesjanela.h
+
+ui_avaliacaojanela.h: ../RedeSocial/avaliacaojanela.ui \
+		/Applications/Qt/5.7/clang_64/bin/uic
+	/Applications/Qt/5.7/clang_64/bin/uic ../RedeSocial/avaliacaojanela.ui -o ui_avaliacaojanela.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -851,7 +881,8 @@ main.o: ../RedeSocial/main.cpp /Applications/Qt/5.7/clang_64/lib/QtWidgets.frame
 		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../RedeSocial/transacoesjanela.h \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/QStandardItemModel \
-		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h
+		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../RedeSocial/avaliacaojanela.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../RedeSocial/main.cpp
 
 testes.o: ../RedeSocial/testes.cpp ../RedeSocial/include/gtest/gtest.h \
@@ -947,6 +978,7 @@ usuario.o: ../RedeSocial/usuario.cpp ../RedeSocial/usuario.h \
 		../RedeSocial/transacoesjanela.h \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/QStandardItemModel \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../RedeSocial/avaliacaojanela.h \
 		ui_usuario.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o usuario.o ../RedeSocial/usuario.cpp
 
@@ -974,6 +1006,7 @@ mainwindow.o: ../RedeSocial/mainwindow.cpp ../RedeSocial/mainwindow.h \
 		../RedeSocial/transacoesjanela.h \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/QStandardItemModel \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../RedeSocial/avaliacaojanela.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../RedeSocial/mainwindow.cpp
 
@@ -999,6 +1032,7 @@ criarperfil.o: ../RedeSocial/criarperfil.cpp ../RedeSocial/criarperfil.h \
 		../RedeSocial/transacoesjanela.h \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/QStandardItemModel \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../RedeSocial/avaliacaojanela.h \
 		ui_criarperfil.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o criarperfil.o ../RedeSocial/criarperfil.cpp
 
@@ -1031,8 +1065,27 @@ transacoesjanela.o: ../RedeSocial/transacoesjanela.cpp ../RedeSocial/transacoesj
 		../RedeSocial/transacao.h \
 		../RedeSocial/avaliacao.h \
 		../RedeSocial/relacionamento.h \
-		ui_transacoesjanela.h
+		../RedeSocial/avaliacaojanela.h \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RedeSocial/Rede.h \
+		ui_transacoesjanela.h \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o transacoesjanela.o ../RedeSocial/transacoesjanela.cpp
+
+avaliacaojanela.o: ../RedeSocial/avaliacaojanela.cpp ../RedeSocial/avaliacaojanela.h \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RedeSocial/Rede.h \
+		../RedeSocial/pessoa.h \
+		../RedeSocial/json.cpp \
+		../RedeSocial/include/json.hpp \
+		../RedeSocial/transacao.h \
+		../RedeSocial/avaliacao.h \
+		../RedeSocial/relacionamento.h \
+		ui_avaliacaojanela.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o avaliacaojanela.o ../RedeSocial/avaliacaojanela.cpp
 
 moc_administrador.o: moc_administrador.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_administrador.o moc_administrador.cpp
@@ -1051,6 +1104,9 @@ moc_editarperfil.o: moc_editarperfil.cpp
 
 moc_transacoesjanela.o: moc_transacoesjanela.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_transacoesjanela.o moc_transacoesjanela.cpp
+
+moc_avaliacaojanela.o: moc_avaliacaojanela.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_avaliacaojanela.o moc_avaliacaojanela.cpp
 
 ####### Install
 

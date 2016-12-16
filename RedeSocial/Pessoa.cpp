@@ -120,7 +120,7 @@ void Pessoa::inserirTransacao(int idTransacao)
 //---------------------------------------------------------------------------
 void Pessoa::inserirAvaliacao(int nota, Transacao *tr)
 {
-    Avaliacao aval = new Avaliacao(nota, tr);
+    Avaliacao *aval = new Avaliacao(nota, tr);
     avaliacoes.push_back(aval);
 }
 //---------------------------------------------------------------------------
@@ -132,6 +132,8 @@ string Pessoa::getInteresse(int ordemInteresse)
 //---------------------------------------------------------------------------
 string Pessoa::pessoaJson() const
 {
+    int len1, len2;
+
     string json;
     string aux1;
 
@@ -165,12 +167,16 @@ string Pessoa::pessoaJson() const
     copy(transacoes.begin(), transacoes.end(), ostream_iterator<int>(aux3, ","));
     aux1 = aux3.str();
     aux1 = aux1.substr(0, aux1.length()-1);
-    json = json + "\"transacoes\":[" + aux1 + "],";
+    json = json + "\"transacoes\":[" + aux1 + "],\"avaliacoes\":[";
 
-    copy(avaliacoes.begin(), avaliacoes.end(), ostream_iterator<int>(aux4, ","));
-    aux1 = aux4.str();
-    aux1 = aux1.substr(0, aux1.length()-1);
-    json = json + "\"avaliacoes\":[" + aux1 + "]}";
-
+    len1 = json.length();
+    for(list<Avaliacao *>::const_iterator i = avaliacoes.begin() ; i != avaliacoes.end() ; i++ ){
+        json =  json + (*i)->avaliacaoJson() + ",";
+    }
+    len2 = json.length();
+    if(len2 > len1){
+        json = json.substr(0, json.length()-1); // retira ultima virgula a direita
+    }
+    json = json + "]}";
     return json;
 }

@@ -614,7 +614,7 @@ Transacao* Rede::iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, strin
     transacoes.push_back(tra);
     return tra;
 }
-
+//---------------------------------------------------------------------------
 void Rede::inserirTransacao(unsigned int id, Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor, bool finalizada)
 {
     Transacao *tra = new Transacao(id, solicitante->getId(), fornecedor->getId(), inteSoliciatante, inteFornecedor);
@@ -626,7 +626,22 @@ void Rede::inserirTransacao(unsigned int id, Pessoa *solicitante, Pessoa *fornec
         idTransacao = id;
     }
 }
+//---------------------------------------------------------------------------
 
+Transacao* Rede::retornaTransação(int id)
+{
+
+    for(list<Transacao *>::iterator i = transacoes.begin(); i != transacoes.end(); i++)
+    {
+        if ((*i)->getId() == id)
+        {
+            return (*i);
+        }
+    }
+
+}
+
+//---------------------------------------------------------------------------
 void Rede::guardarRedeJson(string arquivo)
 {
     using json = nlohmann::json;
@@ -641,7 +656,7 @@ void Rede::guardarRedeJson(string arquivo)
     ofstream o(arquivo);
     o << setw(4) << j << endl;
 }
-
+//---------------------------------------------------------------------------
 string Rede::redeJson()
 {
     int aux1, aux2;
@@ -680,7 +695,7 @@ string Rede::redeJson()
     return json;
 
 }
-
+//---------------------------------------------------------------------------
 bool Rede::criarRedeJson(string arquivo)
 {
     std::ifstream i(arquivo);
@@ -712,7 +727,7 @@ bool Rede::criarRedeJson(string arquivo)
 
     return true;
 }
-
+//---------------------------------------------------------------------------
 bool Rede::inserirPessoasJson(json js)
 {
     if(js.empty()) return false;
@@ -722,7 +737,10 @@ bool Rede::inserirPessoasJson(json js)
     Pessoa *p1;
     string nomeJ;
     string generoJ;
+    Transacao *tra;
 
+    int notaJ;
+    int idTransJ;
     unsigned int idJ;
     unsigned int cepJ;
     unsigned int idadeJ;
@@ -770,7 +788,7 @@ bool Rede::inserirPessoasJson(json js)
         }
     }
 
-    inserePessoa(nomeJ, cepJ, generoJ, idadeJ, escolaridadeJ);
+    inserePessoa(nomeJ, idadeJ, generoJ, cepJ, escolaridadeJ);
     p1 = procuraPonteiroPessoaNome(nomeJ);
     p1->setId(idJ); // necessário para dar o id que foi dado a pessoa inicialmente
 
@@ -787,17 +805,23 @@ bool Rede::inserirPessoasJson(json js)
     {
         p1->inserirTransacao(elem);
     }
-    for(auto& elem : j3)
+    for (json::iterator it = j3.begin(); it != j3.end(); ++it)
     {
-        p1->inserirAvaliacao(elem);
+        if (it.key() == "nota") {
+            notaJ = it.value();
+        }
+        if (it.key() == "IdTransacao") {
+            idTransJ = it.value();
+        }
+        tra = retornaTransação(idTransJ);
+        p1->inserirAvaliacao(notaJ, tra);
     }
     return true;
 }
-
+//---------------------------------------------------------------------------
 bool Rede::inserirTransacaoJson(json js)
 {
     if(js.empty()) return false;
-
 
     Pessoa *p1, *p2;
 
@@ -809,6 +833,11 @@ bool Rede::inserirTransacaoJson(json js)
 
     for (json::iterator it = js.begin(); it != js.end(); ++it)
     {
+
+        if (it.key() == "Id") {
+            idJ = it.value();
+            continue;
+        }
         if (it.key() == "IdFornecedor") {
             p1 = procuraPonteiroPessoaId(it.value());
             continue;
@@ -834,7 +863,7 @@ bool Rede::inserirTransacaoJson(json js)
     // p1- // Inserir na lsita de transações da pessoa
     return true;
 }
-
+//---------------------------------------------------------------------------
 bool Rede::inserirRelacionamentoJson(json js)
 {
     if(js.empty()) return false;
@@ -855,7 +884,6 @@ bool Rede::inserirRelacionamentoJson(json js)
     iniciarRelacionamentoPorId(id1, id2);
 
     return true;
-
 }
 
 

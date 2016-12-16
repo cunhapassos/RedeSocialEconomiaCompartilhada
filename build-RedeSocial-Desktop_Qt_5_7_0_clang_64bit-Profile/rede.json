@@ -181,11 +181,12 @@
     ],
     "transacoes": [
         {
-            "IdConsumidor": 1,
-            "IdFornecedor": 2,
-            "id": 1,
-            "interesseSolicitante": "Comprar Carro",
-            "intersseFornecedor": "Vender Carro"
+            "IdConsumidor": 2,
+            "IdFornecedor": 1,
+            "finalizada": 0,
+            "id": 47262672,
+            "interesseSolicitante": "Vender Carro",
+            "intersseFornecedor": "Comprar Carro"
         }
     ]
 }

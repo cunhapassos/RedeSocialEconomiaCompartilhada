@@ -64,20 +64,7 @@ void Usuario::listarRelacionamentos()
         ui->listWidgetRelacionamentos->addItem(origem + " - " + destino);
     }
 }
-/*
-void Usuario::listarInteresses()
-{
-    for(list<Pessoa *>::iterator i = rede->listaPessoas.begin() ; i != rede->listaPessoas.end() ; i++ ){
-        if((*i) != pes){
-            for(vector<string>::iterator j = (*i)->interesses.begin() ; j != (*i)->interesses.end() ; j++ ){
-                //Parei aqui
-                //ui->tableWidgetInteresses->addItem( QString::fromStdString(*j));
-            }
-        }
 
-    }
-}
-*/
 void Usuario::on_pushButtonIniAmizade_clicked()
 {
     string pes1, pes2;

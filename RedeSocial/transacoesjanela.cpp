@@ -133,3 +133,8 @@ void TransacoesJanela::on_pushButton_5_clicked()
         }
     }
 }
+
+void TransacoesJanela::on_pushButtonConcluir_clicked()
+{
+    hide();
+}

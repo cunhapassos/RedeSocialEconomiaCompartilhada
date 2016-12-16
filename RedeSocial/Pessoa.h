@@ -24,11 +24,10 @@
 
 /* Inclusão do compilador */
 
-
+#include <list>
 #include <vector>
 #include <sstream>
 #include <iostream>
-
 #include "json.cpp"
 #include "transacao.h"
 #include "avaliacao.h"
@@ -69,13 +68,13 @@ class Pessoa
    public:
       vector<string> interesses;
       vector<int> transacoes; // Lista de id das transacoes que a passoa participou
-      vector<Avaliacao *> avaliacoes; // Lista das avaliacoes da pessoa
+      list<Avaliacao *> avaliacoes; // Lista das avaliacoes da pessoa
 
       /** ******************************************************************************
       *
       *  Descricao da funcao:
       *      Método construtor da classe, responsável por inicializar os principais atributos.
-      *
+#include <list>      *
       *  @param      _id           - Identificador único da pessoa.
       *  @param      _nome         - Nome da pessoa.
       *  @param      _idade        - Idade da pessoa.
