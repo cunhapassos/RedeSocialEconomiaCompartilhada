@@ -22,7 +22,9 @@ SOURCES += main.cpp \
     usuario.cpp \
     mainwindow.cpp \
     criarperfil.cpp \
-    editarperfil.cpp
+    editarperfil.cpp \
+    transacoesjanela.cpp \
+    avaliacaojanela.cpp
 
 HEADERS += \
     avaliacao.h \
@@ -34,13 +36,17 @@ HEADERS += \
     usuario.h \
     mainwindow.h \
     criarperfil.h \
-    editarperfil.h
+    editarperfil.h \
+    transacoesjanela.h \
+    avaliacaojanela.h
 
 FORMS    += mainwindow.ui \
     usuario.ui \
     administrador.ui \
     criarperfil.ui \
-    editarperfil.ui
+    editarperfil.ui \
+    transacoesjanela.ui \
+    avaliacaojanela.ui
 
 unix: LIBS += -L$$PWD/./ -lgtest
 

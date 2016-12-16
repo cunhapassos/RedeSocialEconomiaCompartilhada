@@ -10,6 +10,7 @@ Usuario::Usuario(QWidget *parent, Rede *_rede, Pessoa *_pes) :
     rede = _rede;
     pes = _pes;
     listarPessoasDaRede();
+    listarRelacionamentos();
     listarAmigos();
 
 }
@@ -54,6 +55,16 @@ void Usuario::listarAmigos()
     }
 }
 
+void Usuario::listarRelacionamentos()
+{
+    QString origem, destino;
+    for(list<Relacionamento *>::iterator i = rede->listaRelacionamentos.begin() ; i != rede->listaRelacionamentos.end() ; i++ ){
+        origem =  QString::fromStdString((*i)->getOrigem()->getNome());
+        destino = QString::fromStdString((*i)->getDestino()->getNome());
+        ui->listWidgetRelacionamentos->addItem(origem + " - " + destino);
+    }
+}
+/*
 void Usuario::listarInteresses()
 {
     for(list<Pessoa *>::iterator i = rede->listaPessoas.begin() ; i != rede->listaPessoas.end() ; i++ ){
@@ -66,7 +77,7 @@ void Usuario::listarInteresses()
 
     }
 }
-
+*/
 void Usuario::on_pushButtonIniAmizade_clicked()
 {
     string pes1, pes2;
@@ -77,6 +88,7 @@ void Usuario::on_pushButtonIniAmizade_clicked()
     if(!(rede->relacionamentoExiste(pes1, pes2)) && (pes1 != pes2)){
         rede->iniciarRelacionamentoPorNome(pes1, pes2);
         ui->listWidgetAmigos->addItem(QString::fromStdString(pes2));
+        ui->listWidgetRelacionamentos->addItem(QString::fromStdString(pes2) + " - " + QString::fromStdString(pes1));
     }
 }
 
@@ -86,4 +98,16 @@ void Usuario::on_pushButtonExcAmizade_clicked()
     pes2 = ui->listWidgetAmigos->currentItem()->text().toStdString();
     rede->removeRelacionamentoPorCaminhoNome(pes->getNome(), pes2);
     delete ui->listWidgetAmigos->currentItem();
+}
+
+void Usuario::on_actionAbrir_triggered()
+{
+    tJanela = new TransacoesJanela(this, rede, pes);
+    tJanela->show();
+}
+
+void Usuario::on_pushButton_clicked()
+{
+    ui->listWidgetRelacionamentos->clear();
+    listarRelacionamentos();
 }

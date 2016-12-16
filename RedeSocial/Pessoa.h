@@ -69,7 +69,7 @@ class Pessoa
    public:
       vector<string> interesses;
       vector<int> transacoes; // Lista de id das transacoes que a passoa participou
-      vector<int> avaliacoes; // Lista das avaliacoes da pessoa
+      vector<Avaliacao *> avaliacoes; // Lista das avaliacoes da pessoa
 
       /** ******************************************************************************
       *
@@ -336,11 +336,12 @@ class Pessoa
       * Assertivas de saida:
       *     - Lista de avaliacoes contem id da nova avaliacao realizada pelo usuario.
       *
-      * @param  idAvaliacao     - Contém valor inteiro com identificador da avaliacao
-      * correspondente contida na lista de avaliacoes em rede.h.
+      * @param  nota     - Contém valor inteiro com a nota da avaliacao
+      * correspondente a pessoa avaliada.
+      * @param tr        - Ponteiro para a transação realizada.
       *
       ** *******************************************************************************/
-      void inserirAvaliacao(int idAvaliacao);
+      void inserirAvaliacao(int nota, Transacao *tr);
 
       /** ******************************************************************************
       * Funcao: getInteresse

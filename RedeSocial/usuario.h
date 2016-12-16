@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "Rede.h"
 #include "editarperfil.h"
+#include "transacoesjanela.h"
 
 namespace Ui {
 class Usuario;
@@ -18,7 +19,8 @@ public:
 
     void listarPessoasDaRede();
     void listarAmigos();
-    void listarInteresses();
+   // void listarInteresses();
+    void listarRelacionamentos();
     explicit Usuario(QWidget *parent = 0, Rede *_rede = 0, Pessoa *_pes = 0);
     void setUsuario(Pessoa *usuario);
     ~Usuario();
@@ -32,12 +34,16 @@ private slots:
 
     void on_pushButtonExcAmizade_clicked();
 
+    void on_actionAbrir_triggered();
+
+    void on_pushButton_clicked();
+
 private:
     Rede *rede;
     Ui::Usuario *ui;
     Pessoa *pes;
     EditarPerfil *edPerfil;
-
+    TransacoesJanela *tJanela;
 
 };
 

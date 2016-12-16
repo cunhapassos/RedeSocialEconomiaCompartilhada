@@ -46,7 +46,6 @@
 class Avaliacao
 {
 protected:
-    unsigned int id;
     unsigned int notaAvaliacao;
     Transacao* transacao;
 
@@ -71,18 +70,7 @@ public:
     *
     *
     ** *******************************************************************************/
-    Avaliacao(unsigned int _id, unsigned int nota, Transacao *_transacao);
-
-    /** ******************************************************************************
-    *  Funcao: getId
-    *
-    *  Descricao da funcao:
-    *      Informa qual é o identificador unico atribuido a transacao.
-    *
-    * @return unsigned int - retorna identificador unico da avaliacao.
-    *
-    ** *******************************************************************************/
-    unsigned int getId();
+    Avaliacao(unsigned int nota, Transacao *_transacao);
 
     /** ******************************************************************************
     *  Funcao: getNota

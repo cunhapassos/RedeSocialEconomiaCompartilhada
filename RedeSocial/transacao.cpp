@@ -27,7 +27,10 @@ void Transacao::setFim(bool fim)
 {
     finalizada = fim;
 }
-
+bool  Transacao::getFim()
+{
+    return finalizada;
+}
 string Transacao::getInteresseFornecedor() const
 {
     return intersseFornecedor;

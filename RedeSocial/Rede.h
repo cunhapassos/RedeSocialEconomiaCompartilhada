@@ -171,7 +171,6 @@ class Rede
       ** *******************************************************************************/
       Relacionamento* procuraRelacionamentoPorCaminhoId( unsigned int idOrigem, unsigned int idDestino );
 
-
       /** ******************************************************************************
       *
       *  Descricao da funcao:
@@ -441,7 +440,7 @@ class Rede
       * fornecedor.
       *
       ** *******************************************************************************/
-      void iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor);
+      Transacao* iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor);
 
       /** ******************************************************************************
       *  Funcao: iniciarTransacao

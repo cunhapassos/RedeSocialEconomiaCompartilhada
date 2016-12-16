@@ -112,23 +112,24 @@ bool Pessoa::inserirInteresse(string interesse)
     }
     return false;
 }
-
+//---------------------------------------------------------------------------
 void Pessoa::inserirTransacao(int idTransacao)
 {
     transacoes.push_back(idTransacao);
 }
-
-void Pessoa::inserirAvaliacao(int idAvaliacao)
+//---------------------------------------------------------------------------
+void Pessoa::inserirAvaliacao(int nota, Transacao *tr)
 {
-    avaliacoes.push_back(idAvaliacao);
+    Avaliacao aval = new Avaliacao(nota, tr);
+    avaliacoes.push_back(aval);
 }
-
+//---------------------------------------------------------------------------
 string Pessoa::getInteresse(int ordemInteresse)
 {
     if(ordemInteresse < 20) return interesses[ordemInteresse];
     return "";
 }
-
+//---------------------------------------------------------------------------
 string Pessoa::pessoaJson() const
 {
     string json;

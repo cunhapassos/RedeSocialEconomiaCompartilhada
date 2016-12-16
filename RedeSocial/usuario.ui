@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>717</width>
+    <height>440</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,19 +60,6 @@
      <string>Amigos:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>10</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Opções para transação:</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButtonIniAmizade">
     <property name="geometry">
      <rect>
@@ -99,27 +86,40 @@
      <string>Excluir amizade</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidgetInteresses">
+   <widget class="QListWidget" name="listWidgetRelacionamentos">
     <property name="geometry">
      <rect>
       <x>460</x>
       <y>30</y>
-      <width>256</width>
+      <width>231</width>
       <height>321</height>
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonIniTransacao">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>470</x>
+      <y>10</y>
+      <width>171</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Relacionamentos da Rede:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
       <y>350</y>
-      <width>151</width>
+      <width>231</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>Inciciar transação</string>
+     <string>Atualizar</string>
     </property>
    </widget>
   </widget>
@@ -128,7 +128,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>717</width>
      <height>22</height>
     </rect>
    </property>
@@ -139,25 +139,13 @@
     <addaction name="actionEditar_Perfil"/>
     <addaction name="actionExcluir_Perfil"/>
    </widget>
-   <widget class="QMenu" name="menuAmigos">
-    <property name="title">
-     <string>Amigos</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuTransa_es">
     <property name="title">
      <string>Transações</string>
     </property>
-   </widget>
-   <widget class="QMenu" name="menuRede">
-    <property name="title">
-     <string>Rede</string>
-    </property>
-    <addaction name="actionListar_Pessoas"/>
+    <addaction name="actionAbrir"/>
    </widget>
    <addaction name="menuPerfil"/>
-   <addaction name="menuAmigos"/>
-   <addaction name="menuRede"/>
    <addaction name="menuTransa_es"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -174,6 +162,11 @@
   <action name="actionListar_Pessoas">
    <property name="text">
     <string>Listar Pessoas</string>
+   </property>
+  </action>
+  <action name="actionAbrir">
+   <property name="text">
+    <string>Abrir</string>
    </property>
   </action>
  </widget>

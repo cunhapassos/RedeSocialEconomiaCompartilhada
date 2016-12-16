@@ -123,6 +123,17 @@ public:
     *
     ** *******************************************************************************/
     void setFim(bool fim);
+    /** ******************************************************************************
+    *  Funcao: getFim
+    *
+    *  Descricao da funcao:
+    *      Retorna valor do estado da transacao.
+    *
+    * @return fim   - True : transacao finalizada.
+    *               - False : transacao ainda nao finalizada.
+    *
+    ** *******************************************************************************/
+    bool getFim();
 
     /** ******************************************************************************
     *  Funcao: getInteresseFornecedor

@@ -207,21 +207,19 @@ void Rede::removeRelacionamentoPorCaminhoNome( string nomeOrigem, string nomeDes
 {
    const Pessoa *origem;
    const Pessoa *destino;
-   list<Relacionamento *>::iterator posicaoListaRelacionamento = listaRelacionamentos.begin();
 
-   while ( posicaoListaRelacionamento != listaRelacionamentos.end() )
+
+   for (list<Relacionamento *>::iterator i = listaRelacionamentos.begin(); i != listaRelacionamentos.end(); i++ )
    {
-      origem = (*posicaoListaRelacionamento)->getOrigem();
-      destino = (*posicaoListaRelacionamento)->getDestino();
+      origem = (*i)->getOrigem();
+      destino = (*i)->getDestino();
 
-      if ( ( origem->getNome() == nomeOrigem ) || ( destino->getNome() == nomeDestino )  )
+      if ( (( origem->getNome() == nomeOrigem ) && ( destino->getNome() == nomeDestino ) ) || (( origem->getNome() == nomeDestino ) && ( destino->getNome() == nomeOrigem)))
       {
-         delete *posicaoListaRelacionamento;
-         *posicaoListaRelacionamento = NULL;
-         listaRelacionamentos.erase( posicaoListaRelacionamento );
+         delete *i;
+         *i = NULL;
+         listaRelacionamentos.erase( i );
       }
-
-      posicaoListaRelacionamento++;
    }
 }
 //---------------------------------------------------------------------------
@@ -229,22 +227,19 @@ void Rede::removeRelacionamentoPorCaminhoId( unsigned int idOrigem, unsigned int
 {
    const Pessoa *origem;
    const Pessoa *destino;
-   list<Relacionamento *>::iterator posicaoListaRelacionamento = listaRelacionamentos.begin();
 
-   while ( posicaoListaRelacionamento != listaRelacionamentos.end() )
+   for (list<Relacionamento *>::iterator i = listaRelacionamentos.begin(); i != listaRelacionamentos.end(); i++ )
    {
-      origem = (*posicaoListaRelacionamento)->getOrigem();
-      destino = (*posicaoListaRelacionamento)->getDestino();
+      origem = (*i)->getOrigem();
+      destino = (*i)->getDestino();
 
-      if ( ( origem->getId() == idOrigem ) && ( destino->getId() == idDestino )  )
+      if ( (( origem->getId() == idOrigem ) && ( destino->getId() == idDestino )) ||  (( origem->getId() == idDestino ) && ( destino->getId() == idOrigem )) )
       {
-         delete *posicaoListaRelacionamento;
-         *posicaoListaRelacionamento = NULL;
-         listaRelacionamentos.erase( posicaoListaRelacionamento );
+         delete *i;
+         *i = NULL;
+         listaRelacionamentos.erase( i );
          break;
       }
-
-      posicaoListaRelacionamento++;
    }
 }
 //---------------------------------------------------------------------------
@@ -611,12 +606,13 @@ Relacionamento* Rede::procuraRelacionamentoPorCaminhoId( unsigned int idOrigem, 
 }
 //---------------------------------------------------------------------------
 
-void Rede::iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor)
+Transacao* Rede::iniciarTransacao(Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor)
 {
     idTransacao++;
 
     Transacao *tra = new Transacao(idTransacao, solicitante->getId(), fornecedor->getId(), inteSoliciatante, inteFornecedor);
     transacoes.push_back(tra);
+    return tra;
 }
 
 void Rede::inserirTransacao(unsigned int id, Pessoa *solicitante, Pessoa *fornecedor, string inteSoliciatante, string inteFornecedor, bool finalizada)
