@@ -37,7 +37,6 @@
 #include "pessoa.h"
 #include "transacao.h"
 #include "relacionamento.h"
-
 #include "json.hpp"
 
 /** ********************************************************************************
@@ -66,7 +65,7 @@
 class Rede
 {
     /* Atributos da classe */
-    protected:
+      protected:
       string nome;
       bool direcionado; // VERIFICAR SE CONVÉM RETIRAR????
       unsigned int idPessoa;

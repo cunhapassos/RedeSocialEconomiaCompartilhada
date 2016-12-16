@@ -97,4 +97,6 @@ TEST_F(RedeTeste, Teste_Pessoa){
 
     //cout << p.pessoaJson(); // imprime json da pessoa
 }
+TEST_F(RedeTeste, Teste_Transacao){
 
+}

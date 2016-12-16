@@ -744,7 +744,6 @@ bool Rede::inserirPessoasJson(json js)
     unsigned int idJ;
     unsigned int cepJ;
     unsigned int idadeJ;
-    unsigned int idPessoaJ;
     string escolaridadeJ;
     vector<string> interessesJ;
 
@@ -783,12 +782,14 @@ bool Rede::inserirPessoasJson(json js)
             continue;
         }
         if (it.key() == "avaliacoes") {
+            cout << *it;
             j3 = *it;
             continue;
         }
     }
 
     inserePessoa(nomeJ, idadeJ, generoJ, cepJ, escolaridadeJ);
+
     p1 = procuraPonteiroPessoaNome(nomeJ);
     p1->setId(idJ); // necessário para dar o id que foi dado a pessoa inicialmente
 
@@ -805,17 +806,22 @@ bool Rede::inserirPessoasJson(json js)
     {
         p1->inserirTransacao(elem);
     }
+
     for (json::iterator it = j3.begin(); it != j3.end(); ++it)
     {
-        if (it.key() == "nota") {
-            notaJ = it.value();
-        }
-        if (it.key() == "IdTransacao") {
-            idTransJ = it.value();
+
+        for (json::iterator is = it->begin(); is != it->end(); ++is){
+            if (is.key() == "nota") {
+                notaJ = is.value();
+            }
+            if (is.key() == "IdTransacao") {
+                idTransJ = is.value();
+            }
         }
         tra = retornaTransação(idTransJ);
         p1->inserirAvaliacao(notaJ, tra);
     }
+
     return true;
 }
 //---------------------------------------------------------------------------
@@ -879,7 +885,7 @@ bool Rede::inserirRelacionamentoJson(json js)
         if (it.key() == "idDestino") {
             id2 = it.value();
             continue;
-        } 
+        }
     }
     iniciarRelacionamentoPorId(id1, id2);
 

@@ -3,7 +3,7 @@
         {
             "avaliacoes": [
                 {
-                    "IdTransacao": 1,
+                    "IdTransacao": 2405657969,
                     "nota": 5
                 }
             ],
@@ -36,7 +36,12 @@
             "transacoes": []
         },
         {
-            "avaliacoes": [],
+            "avaliacoes": [
+                {
+                    "IdTransacao": 2266164465,
+                    "nota": 3
+                }
+            ],
             "cep": 71065906,
             "escolaridade": "Medio completo",
             "genero": "M",
@@ -79,6 +84,32 @@
             ],
             "nome": "Thais",
             "transacoes": []
+        },
+        {
+            "avaliacoes": [],
+            "cep": 47678,
+            "escolaridade": "segundo grau incompleto",
+            "genero": "M",
+            "id": 6,
+            "idade": 13,
+            "interesses": [
+                "Comprar CD"
+            ],
+            "nome": "Theo",
+            "transacoes": []
+        },
+        {
+            "avaliacoes": [],
+            "cep": 0,
+            "escolaridade": "primeiro grau incompleto",
+            "genero": "M",
+            "id": 7,
+            "idade": 45,
+            "interesses": [
+                "Vender DVD"
+            ],
+            "nome": "Andre",
+            "transacoes": []
         }
     ],
     "ListaRelacionamentos": [
@@ -97,15 +128,37 @@
         {
             "idDestino": 2,
             "idOrigem": 5
+        },
+        {
+            "idDestino": 3,
+            "idOrigem": 6
+        },
+        {
+            "idDestino": 5,
+            "idOrigem": 7
         }
     ],
     "transacoes": [
         {
             "IdConsumidor": 1,
             "IdFornecedor": 2,
-            "id": 1,
+            "id": 32767,
             "interesseSolicitante": "Comprar Carro",
             "intersseFornecedor": "Vender Carro"
+        },
+        {
+            "IdConsumidor": 3,
+            "IdFornecedor": 6,
+            "id": 32767,
+            "interesseSolicitante": "  Dar Carona",
+            "intersseFornecedor": ""
+        },
+        {
+            "IdConsumidor": 2,
+            "IdFornecedor": 6,
+            "id": 32767,
+            "interesseSolicitante": "  Vender Carro",
+            "intersseFornecedor": ""
         }
     ]
 }

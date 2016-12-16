@@ -15,18 +15,23 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Administrador
 {
 public:
+    QLabel *label;
 
     void setupUi(QDialog *Administrador)
     {
         if (Administrador->objectName().isEmpty())
             Administrador->setObjectName(QStringLiteral("Administrador"));
         Administrador->resize(400, 300);
+        label = new QLabel(Administrador);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(100, 110, 191, 16));
 
         retranslateUi(Administrador);
 
@@ -36,6 +41,7 @@ public:
     void retranslateUi(QDialog *Administrador)
     {
         Administrador->setWindowTitle(QApplication::translate("Administrador", "Dialog", 0));
+        label->setText(QApplication::translate("Administrador", "Aguardando Implementa\303\247\303\243o!!!", 0));
     } // retranslateUi
 
 };
