@@ -15,6 +15,9 @@ public:
     explicit AvaliacaoJanela(QWidget *parent = 0, Rede *_rede = 0, Pessoa *_pes = 0, Transacao *_tr = 0);
     ~AvaliacaoJanela();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::AvaliacaoJanela *ui;
     Rede *rede;
