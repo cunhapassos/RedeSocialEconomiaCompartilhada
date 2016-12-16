@@ -7,13 +7,38 @@
 18/11/2016   |      4h           | codificar módulo        | Refatoração, renomemeação e passagem de código existente do módulo  |
              |                   |                         |de grafo do paradigma estruturado para o paradigma orientado a objeto|
 -------------|-------------------|-------------------------|---------------------------------------------------------------------|
-12/12/2016   |      2h           | Teste                   | Reteste do código refatorado, correção de erros, elaboração de novos|
+05/12/2016   |      2h           | Redigir roteiro de      | Elaboração do roteiro de testes para posterior codificação          |
+             |                   | teste                   |                                                                     |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+05/12/2016   |      2h           | Teste                   | Reteste do código refatorado, correção de erros, elaboração de novos|
              |                   |                         |testes,  refatoração de de código                                    |
 -------------|-------------------|-------------------------|---------------------------------------------------------------------|
-13/12/2016   |      1h           |Estudo                   | Estudo de como calcular distancia entre pessoas da rede             |
+10/12/2016   |      1h           | Estudo                  | Estudo de como calcular distancia entre pessoas da rede             |
 -------------|-------------------|-------------------------|---------------------------------------------------------------------|
-13/12/2016   |      3h           |Estudo                   | Como implementar interface gráfica                                  |
+10/12/2016   |      3h           | Estudo                  | Como implementar interface gráfica                                  |
 -------------|-------------------|-------------------------|---------------------------------------------------------------------|
-13/12/2016   |      3h20         |Codificar                | Elaboração de testes para o calculo de distancia da rede, elaboração|
+10/12/2016   |      3h20         | Codificar               | Elaboração de testes para o calculo de distancia da rede, elaboração|
              |                   |                         |das funções de calculo de distancia, correção de erros e refatoração |
 -------------|-------------------|-------------------------|---------------------------------------------------------------------|
+13/12/2016   |      1h           | Especificar módulos     | Estudo do funcionamento da rede e definição das estruturas a serem  |
+             |                   |                         | utilizadas                                                          |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+14/12/2016   |      3h           | Codificar               | Codificação de funcionamento parcial da rede, refatoração de rela-  |
+             |                   |                         | cionamentos e transações.                                           |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+14/12/2016   |      2h           | Codificar               | Codificar interface de usuário para adicionar e remover pessoas     |
+             |                   |                         |                                                                     |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+15/12/2016   |      4h           | Codificar               | Codificação da interface de usuario para edição de perfil e da      |
+             |                   |                         | interface para transações                                           |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+16/12/2016   |      3h           | Teste                   | Elaboração e codificação de testes para classe principal Rede.h     |
+             |                   |                         | envolvendo funcionamento basico da rede                             |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+16/12/2016   |      0h30         | Documentação            | Revisão da documentação para para gerar documentação em Doxygen     |
+             |                   |                         |                                                                     |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+16/12/2016   |      1h30         | Transporte para         | Verificação das exigências para build rodar em linux                |
+             |                   | linux                   |                                                                     |
+-------------|-------------------|-------------------------|---------------------------------------------------------------------|
+
