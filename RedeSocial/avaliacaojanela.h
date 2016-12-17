@@ -33,6 +33,24 @@ namespace Ui {
 class AvaliacaoJanela;
 }
 
+/** ********************************************************************************
+ * Classe: AvaliacaoJanela
+ *
+ * Descrição da classe:
+ *  Classe responsável pelos ações que envolvem a janela de avaliação de uma 
+ * transação.
+ *
+ * Requisitos assegurados pela classe:
+ *  Ações de repasse e atualização de avaliação das transações da rede.
+ *
+ * Hipóteses assumidas pela classe:
+ *  Usuário utiliza valores válidos para a avaliação.
+ *
+ * Restrições da classe:
+ *  É necessário o uso de formatos válidos.
+ *
+ * ********************************************************************************/
+
 class AvaliacaoJanela : public QDialog
 {
     Q_OBJECT
