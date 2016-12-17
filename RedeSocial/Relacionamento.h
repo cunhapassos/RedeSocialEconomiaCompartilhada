@@ -10,7 +10,7 @@
  *         fo e os relacionamentos são representados pelas arestas.
  *         O grafo é implementado por meio de lista duplamente encadeada.
  *
- * @author NUR CORREIA - MAT. 15/0143290
+ * @author NUR CORREZZI - MAT. 15/0143290
  * @author PAULO DA CUNHA PASSOS - MAT. 10/0118577
  * @version 1.0
  * @since 19/11/2016
