@@ -467,7 +467,7 @@ class Rede
       * @param id         - identificador da transação a ser retornada.
       *
       ** *******************************************************************************/
-      Transacao* retornaTransação(int id);
+      Transacao* retornaTransacao(int id);
 
       /** ******************************************************************************
       * Funcao: iniciarTransacao

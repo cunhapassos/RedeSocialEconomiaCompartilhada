@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-
+/*
     Rede *rede = new Rede("Economia");
     Pessoa *p;
     rede->criarRedeJson("rede.json");
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     rede->guardarRedeJson("rede.json");
 
     return 0;
-/*
+*/
     ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS(); */
+    return RUN_ALL_TESTS();
 }

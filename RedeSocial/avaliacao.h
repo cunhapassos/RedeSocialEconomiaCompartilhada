@@ -60,7 +60,8 @@ public:
     *  Assertiva de entrada:
     *      - _id é um identificador único da avaliação na rede.
     *      - nota, possui um valor não negativo.
-    *      - *_transacao existe e esta inserido na lista de transacoes da rede.
+    *      - *_transacao existe e está inserido na lista de transacoes da rede, não pode
+    *       ser NULL.
     *
     *  Assertiva de saída:
     *      - Avaliação criada com sucesso.

@@ -628,7 +628,7 @@ void Rede::inserirTransacao(unsigned int id, Pessoa *solicitante, Pessoa *fornec
 }
 //---------------------------------------------------------------------------
 
-Transacao* Rede::retornaTransação(int id)
+Transacao* Rede::retornaTransacao(int id)
 {
 
     for(list<Transacao *>::iterator i = transacoes.begin(); i != transacoes.end(); i++)
@@ -818,7 +818,7 @@ bool Rede::inserirPessoasJson(json js)
                 idTransJ = is.value();
             }
         }
-        tra = retornaTransação(idTransJ);
+        tra = retornaTransacao(idTransJ);
         p1->inserirAvaliacao(notaJ, tra);
     }
 

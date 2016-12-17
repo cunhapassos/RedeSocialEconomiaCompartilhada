@@ -3,7 +3,7 @@
         {
             "avaliacoes": [
                 {
-                    "IdTransacao": 2405657969,
+                    "IdTransacao": 1,
                     "nota": 5
                 }
             ],
@@ -38,7 +38,7 @@
         {
             "avaliacoes": [
                 {
-                    "IdTransacao": 2266164465,
+                    "IdTransacao": 0,
                     "nota": 3
                 }
             ],
@@ -140,25 +140,25 @@
     ],
     "transacoes": [
         {
-            "IdConsumidor": 1,
+            "IdConsumidor": 2,
+            "IdFornecedor": 1,
+            "id": 32767,
+            "interesseSolicitante": "Vender Carro",
+            "intersseFornecedor": "Comprar Carro"
+        },
+        {
+            "IdConsumidor": 6,
+            "IdFornecedor": 3,
+            "id": 32767,
+            "interesseSolicitante": "",
+            "intersseFornecedor": "  Dar Carona"
+        },
+        {
+            "IdConsumidor": 6,
             "IdFornecedor": 2,
             "id": 32767,
-            "interesseSolicitante": "Comprar Carro",
-            "intersseFornecedor": "Vender Carro"
-        },
-        {
-            "IdConsumidor": 3,
-            "IdFornecedor": 6,
-            "id": 32767,
-            "interesseSolicitante": "  Dar Carona",
-            "intersseFornecedor": ""
-        },
-        {
-            "IdConsumidor": 2,
-            "IdFornecedor": 6,
-            "id": 32767,
-            "interesseSolicitante": "  Vender Carro",
-            "intersseFornecedor": ""
+            "interesseSolicitante": "",
+            "intersseFornecedor": "  Vender Carro"
         }
     ]
 }
