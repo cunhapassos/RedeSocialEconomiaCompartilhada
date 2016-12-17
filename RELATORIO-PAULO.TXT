@@ -23,10 +23,10 @@
 13/12/2016   |      1h           | Especificar módulos     | Estudo do funcionamento da rede e definição das estruturas a serem  |
              |                   |                         | utilizadas                                                          |
 -------------|-------------------|-------------------------|---------------------------------------------------------------------|
-14/12/2016   |      3h           | Codificar               | Codificação de funcionamento parcial da rede, refatoração de rela-  |
+14/12/2016   |      5h           | Codificar               | Codificação de funcionamento parcial da rede, refatoração de rela-  |
              |                   |                         | cionamentos e transações.                                           |
 -------------|-------------------|-------------------------|---------------------------------------------------------------------|
-14/12/2016   |      2h           | Codificar               | Codificar interface de usuário para adicionar e remover pessoas     |
+14/12/2016   |      5h           | Codificar               | Codificar interface de usuário para adicionar e remover pessoas     |
              |                   |                         |                                                                     |
 -------------|-------------------|-------------------------|---------------------------------------------------------------------|
 15/12/2016   |      4h           | Codificar               | Codificação da interface de usuario para edição de perfil e da      |
